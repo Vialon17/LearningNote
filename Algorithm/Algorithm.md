@@ -391,3 +391,20 @@ The Graph's Composition:
 
 * `Weight`: the abstract concept the parter of the Edge to measure the relation in two vertexes;
 
+In order to express the Graph in Python, we use the `adjacency list` and nested dict type(here is an example):
+```Python
+vertex_dict = { 'v1': {'v2': 5, 'v4': 10},
+                'v2': {'v3': 3, 'v5': 9},
+                'v3': {'v4': 6, 'v5': 1},
+                'v4':None,
+                'v5': None}
+```
+| The Vertex |  The Path | The Weight |
+| ---------  |  -------- | ---------- |
+| V1 | -> V2 | 5 |
+| V1 | -> V4 | 10 |
+| V2 | -> V3 | 3 |
+| V2 | -> V5 | 9 |
+| V3 | -> V4 | 6 |
+| V3 | -> V5 | 1 |
+

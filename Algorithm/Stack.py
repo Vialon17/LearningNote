@@ -140,28 +140,30 @@ def ins_sort(list1: list):
 
 #Graph
 class Graph_ver:
-    def __init__(self):
-        self._vertex = []
+    def __init__(self, ver_):
+        self._vertex = {}
     
     @property
     def vertex(self):
         return self._vertex
     
     def add_vertex(self, key):
-        self._vertex.append(key)
+        self._vertex[key] = {}
         return key
     
     def del_vertex(self, key):
         if key in self._vertex:
-            self._vertex.remove(key)
+            del self.vertex[key]
         else:
             raise Exception('Key Error')
     
+    def add_rel(self, from_ver, to_ver, weight):
+        if from_ver not in self.vertex:
+            raise KeyError(f'The vertex: {from_ver} isn\'t existed, please ensure the key.')
+        self.vertex[from_ver][to_ver] = weight
 
-class Graph_rel():
-    pass
 def main():
-    print(ins_sort([2, 59, 0, 46, 23]))
+    ver = Graph_ver()
 
 if __name__ == '__main__':
     main()

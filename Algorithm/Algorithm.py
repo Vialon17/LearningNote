@@ -17,9 +17,19 @@ def set_1():
 #1.5 阅读电话簿中每个人的电话号码。
 #1.6 阅读电话簿中姓名以A打头的人的电话号码。这个问题比较棘手，它涉及第4章的概念。答案可能让你感到惊讶！
 
+#About Dijkstra's Algorithm
+def dikstra(vertex_dict: dict):
+    target_path = {}
+    for key in vertex_dict:
+        target_path[key] = None
 
 def main():
-    pass
+    vertex = {'score': {'record': 5, 'poster': 0},
+            'record': {'guitar': 15, 'drum_kit': 20},
+            'poster': {'guitar': 30, 'dump_kit': 35},
+            'drum_kit': {'piano': 10},
+            'guitar': {'piano': 20},
+            'piano': None}
 
 if __name__ == '__main__':
     main()
