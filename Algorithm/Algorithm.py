@@ -26,10 +26,10 @@ def dikstra(vertex_dict: dict):
 def main():
     vertex = {'score': {'record': 5, 'poster': 0},
             'record': {'guitar': 15, 'drum_kit': 20},
-            'poster': {'guitar': 30, 'dump_kit': 35},
+            'poster': {'guitar': 30, 'drum_kit': 35},
             'drum_kit': {'piano': 10},
             'guitar': {'piano': 20},
             'piano': None}
-
+    
 if __name__ == '__main__':
     main()
