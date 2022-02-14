@@ -19,5 +19,6 @@ I have to learn MySQL for my job, but I'd prefer the non-relational database Mon
 There the SQL is the basic for data analysis so there could havn't any reasons for me don't master it.
 
 Let's make it. 😀
+
 -----
 [^1]: [Good Luck Charlie](https://en.wikipedia.org/wiki/Good_Luck_Charlie): I tried to translate the `Learning Note` and the Yodao gave me this, so that I add it to here because it's funny. _It's a good idea to get touch with the foreign culture if ur a Chinese._ 
