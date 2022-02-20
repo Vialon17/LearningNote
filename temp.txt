@@ -1,0 +1,222 @@
+李(000C29E749B8对话) 10:57:56
+临时表：  DUAL 
+截取字符串函数：
+SUBSTR(字段,pos,len)  
+SUBSTRING()
+pos 起始截取位置
+len 截取长度
+SELECT SUBSTR(ename,1,1) AS 姓 FROM emp; 
+SELECT SUBSTR('dfhrufnfslk',4,6) FROM DUAL;   -- 从左截取
+SELECT SUBSTR('dfhrufnfslk',-8,6) FROM DUAL;  -- 从右截取
+SELECT SUBSTR('dfhrufnfslk',-8) FROM DUAL;
+MID(字段,pos,len)
+LEFT(字段,len)   -- 左截取
+RIGHT(字段,len)   -- 右截取
+拼接函数：
+CONCAT(字段,字段...)
+SELECT CONCAT('姓名：',ename) FROM emp;
+SELECT CONCAT('afsf','afafyh','sgsg') FROM DUAL;
+长度函数：
+LENGTH(字段)
+mysql中文属于3个长度，oracle中文属于2个长度
+SELECT LENGTH('fdsj3432jjdg') FROM DUAL;
+SELECT LENGTH(ename) FROM emp;
+替换函数：
+REPLACE(字段,from_str,to_str)
+from_str 被替换对象
+to_str 替换对象
+SELECT REPLACE('127471411321134112','1','m') FROM DUAL;
+SELECT REPLACE('127471411321134112','1','') FROM DUAL;  -- 删除
+查找函数：
+INSTR(字段,SUBSTR)
+substr查找的对象位置，第一位出现的位置
+SELECT INSTR('127471411321134112','7') FROM DUAL;
+SELECT INSTR('127471411321134112','71411') FROM DUAL;
+oracle用法：
+INSTR(字段,SUBSTR,a,b)
+a代表pos，从第几位开始查找
+b代表第几次出现
+
+李(000C29E749B8对话) 10:57:56
+临时表：  DUAL 
+截取字符串函数：
+SUBSTR(字段,pos,len)  
+SUBSTRING()
+pos 起始截取位置
+len 截取长度
+SELECT SUBSTR(ename,1,1) AS 姓 FROM emp; 
+SELECT SUBSTR('dfhrufnfslk',4,6) FROM DUAL;   -- 从左截取
+SELECT SUBSTR('dfhrufnfslk',-8,6) FROM DUAL;  -- 从右截取
+SELECT SUBSTR('dfhrufnfslk',-8) FROM DUAL;
+MID(字段,pos,len)
+LEFT(字段,len)   -- 左截取
+RIGHT(字段,len)   -- 右截取
+拼接函数：
+CONCAT(字段,字段...)
+SELECT CONCAT('姓名：',ename) FROM emp;
+SELECT CONCAT('afsf','afafyh','sgsg') FROM DUAL;
+长度函数：
+LENGTH(字段)
+mysql中文属于3个长度，oracle中文属于2个长度
+SELECT LENGTH('fdsj3432jjdg') FROM DUAL;
+SELECT LENGTH(ename) FROM emp;
+替换函数：
+REPLACE(字段,from_str,to_str)
+from_str 被替换对象
+to_str 替换对象
+SELECT REPLACE('127471411321134112','1','m') FROM DUAL;
+SELECT REPLACE('127471411321134112','1','') FROM DUAL;  -- 删除
+查找函数：
+INSTR(字段,SUBSTR)
+substr查找的对象位置，第一位出现的位置
+SELECT INSTR('127471411321134112','7') FROM DUAL;
+SELECT INSTR('127471411321134112','71411') FROM DUAL;
+oracle用法：
+INSTR(字段,SUBSTR,a,b)
+a代表pos，从第几位开始查找
+b代表第几次出现
+
+
+YLC 09:32:06
+111
+
+
+
+李之朋 09:32:14
+1、 统计Student表中各个班级的男女生人数。
+
+2、 查询教师所有的单位即不重复的Depart列。
+
+3、 查询Student表的所有记录。
+
+4、 查询Score表中成绩在60到80之间的所有记录。
+
+5、 查询Score表中成绩为85，86或88的记录。
+
+6、 查询Student表中“95031”班或性别为“女”的同学记录。
+
+7、 以Class降序查询Student表的所有记录。
+
+8、 以Cno升序、Degree降序查询Score表的所有记录。
+
+9、 查询“95031”班的学生人数。
+
+10、查询Score表中的最高分的学生学号和课程号。（子查询或者排序）
+
+11、查询每门课的平均成绩。
+
+12、查询Score表中至少有5名学生选修的并以3开头的课程的平均分数。
+
+13、查询分数大于70，小于90的Sno列。
+
+14、查询所有学生的Sname、Cno和Degree列。
+
+15、查询所有学生的Sno、Cname和Degree列。
+
+16、查询所有学生的Sname、Cname和Degree列。
+
+17、查询“95031”班学生的平均分。
+
+19、查询选修“3-105”课程的成绩高于“109”号同学成绩的所有同学的记录。
+
+21、查询成绩高于学号为“109”、课程号为“3-105”的成绩的所有记录。
+
+22、查询和学号为108、101的同学同年出生的所有学生的Sno、Sname和Sbirthday列。
+
+23、查询“王萍“教师任课的学生成绩。
+
+24、查询选修某课程的同学人数多于2人的教师姓名。
+
+25、查询95033班和95031班全体学生的记录。
+
+26、查询存在有85分以上成绩的课程Cno。
+
+27、查询出“计算机系“教师所教课程的成绩表。
+
+28、查询“计算 机系”与“电子工程系“不同职称的教师的Tname和Prof。
+
+29、查询选修编号为“3-105“课程且成绩至少高于选修编号为“3-245”的同学的Cno、Sno和Degree,并按Degree从高到低次序排序。
+
+30、查询选修编号为“3-105”且成绩高于选修编号为“3-245”课程的同学的Cno、Sno和Degree。
+
+31、查询所有教师和同学的name、sex和birthday。
+
+
+33、查询成绩比该课程平均成绩低的同学的成绩表。
+
+
+34、查询所有任课教师的Tname和Depart.
+
+36、查询至少有2名男生的班号。
+
+37、查询Student表中不姓“王”的同学记录。
+
+38、查询Student表中每个学生的姓名和年龄。
+
+39、查询Student表中最大和最小的Sbirthday日期值。
+
+40、以班号和年龄从大到小的顺序查询Student表中的全部记录。
+
+41、查询“男”教师及其所上的课程。
+
+42、查询最高分同学的Sno、Cno和Degree列。
+
+43、查询和“李军”同性别的所有同学的Sname。
+
+44、查询和“李军”同性别并同班的同学Sname。
+
+45、查询所有选修“计算机导论”课程的“男”同学的成绩表。
+
+YLC 09:32:06
+111
+
+
+
+李之朋 09:32:14
+1、 统计Student表中各个班级的男女生人数。
+
+2、 查询教师所有的单位即不重复的Depart列。
+
+3、 查询Student表的所有记录。
+
+4、 查询Score表中成绩在60到80之间的所有记录。
+
+5、 查询Score表中成绩为85，86或88的记录。
+
+6、 查询Student表中“95031”班或性别为“女”的同学记录。
+
+7、 以Class降序查询Student表的所有记录。
+
+8、 以Cno升序、Degree降序查询Score表的所有记录。
+
+9、 查询“95031”班的学生人数。
+
+10、查询Score表中的最高分的学生学号和课程号。（子查询或者排序）
+
+11、查询每门课的平均成绩。
+
+12、查询Score表中至少有5名学生选修的并以3开头的课程的平均分数。
+
+13、查询分数大于70，小于90的Sno列。
+
+14、查询所有学生的Sname、Cno和Degree列。
+
+15、查询所有学生的Sno、Cname和Degree列。
+
+16、查询所有学生的Sname、Cname和Degree列。
+
+17、查询“95031”班学生的平均分。
+
+19、查询选修“3-105”课程的成绩高于“109”号同学成绩的所有同学的记录。
+
+21、查询成绩高于学号为“109”、课程号为“3-105”的成绩的所有记录。
+
+22、查询和学号为108、101的同学同年出生的所有学生的Sno、Sname和Sbirthday列。
+
+23、查询“王萍“教师任课的学生成绩。
+
+24、查询选修某课程的同学人数多于2人的教师姓名。
+
+25、查询95033班和95031班全体学生的记录。
+
+26、查询存在
