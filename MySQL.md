@@ -1,5 +1,9 @@
 # MySQl Learning Note
 
+**It's so funny that I have to `Reinvent the Wheel`, lol~**
+
+*But you couldn't oppose it because it can improve ur comprehension of the target*🤣 🤣 🤣
+
 ## About MySQL
 
 The __SQL__:
@@ -22,17 +26,32 @@ There have four basic parts in this chapter: Add, delete, set, select and it's e
 
 ### Basic Syntax
 
-* Before Beginning
+* __Before Beginning__
   
-    > * Install the SQL service
-    > Download the suitable version of [MySQL software](https://dev.mysql.com/downloads/mysql/).
-    > You should config the configuration file at first and take care of the client port and service port settings.
-    > Then just keep going with this [tutorial](https://www.runoob.com/mysql/mysql-install.html) and finish your installation.
-    > * Config the environment variables
-    > Use the `Win + R'` shortcut to run `sysdm.cpl` to find the computer's environment variables setting, which hids in the advanced option.
-    > Add the path of MySQL service into the user variables' path dict to run the MySQL in shell.
-    > Use the command `mysqld install` in shell with adminstrator to install the service so that you can set the status in `services.msc` and start it with Wndows.
+     * __Install the SQL service__
+     Download the suitable version of [MySQL software](https://dev.mysql.com/downloads/mysql/).
+     You should config the configuration file at first and take care of the client port and service port settings.
+     Then just keep going with this [tutorial](https://www.runoob.com/mysql/mysql-install.html) and finish your installation.
+
+     * __Config the environment variables__
+     Use the `Win + R'` shortcut to run `sysdm.cpl` to find the computer's environment variables setting, which hids in the advanced option.
+     Add the path of MySQL service into the user variables' path dict to run the MySQL in shell.
+     Use the command `mysqld install` in shell with adminstrator to install the service so that you can set the status in `services.msc` and start it with Wndows.
     
-* Add and Insert
+* __Add and Insert__
     
-    > 
+    * __Create some datebase about...__
+  
+        *There usually use the simple English words to express the SQL syntax as well as the other programming language:*
+
+      > `create database db_name` -> To create DB library;
+      >
+      > `use db_name` -> SWitch the cursor to dbname;
+      >
+      > `create table table_name(column1_name column1_type, column2_name colume2_type, etc)` -> To create an table named tablename in the database library you selected, which includes column1 and column2;
+      >
+      > After creating some empty table, the next thing we should solve is insert data into the target table,
+      >
+      > `insert into table_name(column1, colume2, etc) values(column1, colume2, etc), (column1, colume2, etc)` -> To add data into the target column of the table. *Attention: the numbers of the data should keep equality with the number of the columns.*
+        
+        
