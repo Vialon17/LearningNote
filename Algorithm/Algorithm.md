@@ -420,4 +420,4 @@ U should notice that the `adjacency list` has its direction:
 > ```
 > But the list only shows the forward direction; 
 >
-In fact, u should create several classes to show the relation between different vertexes which contains some functions to discribe the complex relationships, but I prefer using a dict to show it [Graph_ver](./Stack.py).
+In fact, u should create several classes to show the relation between different vertexes which contains some functions to discribe the complex relationships, but I prefer using a dict to show it, the [Graph_ver](./Stack.py), in which I use the minus to show the father nodes of the vertex.
