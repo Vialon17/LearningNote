@@ -71,5 +71,5 @@ There have four basic parts in this chapter: Add, delete, set, select and it's e
 
     so we have inserted some data into a table.
 
-* __Read__
-        
+* __Read and Query__
+  
