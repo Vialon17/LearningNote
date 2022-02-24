@@ -37,7 +37,7 @@ There have four basic parts in this chapter: Add, delete, set, select and it's e
 
 ### CRUD(create read update delete)
 
-* __Before Beginning__
+* __Before Beginning__[^1]
   
      * __Install the SQL service__
      Download the suitable version of [MySQL software](https://dev.mysql.com/downloads/mysql/).
@@ -73,3 +73,4 @@ There have four basic parts in this chapter: Add, delete, set, select and it's e
 
 * __Read and Query__
   
+[^1]: u should import the practice SQL data into ur database, here we have three database to practice and it's easy to find some practice questions in mang websites.
