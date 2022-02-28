@@ -323,9 +323,9 @@ The Bubble Sort's `core thought`:
 * `recursion` or `cycle`.
 
 It's easy to understand and use in practical works.  
-we just need compare the fist value with the other values, if there has another value is greater than the first, regard it as the first and continue.  
+we just need compare the first value with the other values, if there has another value is greater than the first, regard it as the first and continue.  
 We get the maximum of the list after comparison for `n cycles`.   
-Then we throw away it temporarily and start the comparison bwtween the second with the left ones to get `the second maximum`(n-1 cycles), just do cycle and we can sort the list finally.
+Then we throw away it temporarily and start the comparison between the second with the left ones to get `the second maximum`(n-1 cycles), just do cycle and we can sort the list finally.
 
 The Time Complexity for Bubble Sort: BigO(n<sup>2</sup>)
 > In fact, the number of the comparison is:$\frac 12*n^2+ \frac 12*n = n+(n-1)+(n-2)+...+1$  
