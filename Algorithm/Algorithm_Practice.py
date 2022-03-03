@@ -1,3 +1,4 @@
+from logging import exception
 from operator import index
 from time import time
 #请在 solution.py 里完善代码，实现以下函数功能：
@@ -138,16 +139,95 @@ def removeParentheses(self, s: str) -> str:
 #给出一棵二叉树，返回其节点值的后序遍历。
 #输入：二叉树 = {1,2,3}
 #输出：[2,3,1]
+class Solution:
 
+    from typing import List
+    # I havn't download the lincode lib.
+    # from lintcode import TreeNode
+
+    """
+    Definition of TreeNode:
+    class TreeNode:
+        def __init__(self, val):
+            self.val = val
+            self.left, self.right = None, None
+    """
+
+    """
+    @param root: A Tree
+    @return: Postorder in ArrayList which contains node values.
+    """
+    def postorder_traversal(self, root) -> List[int]:
+        # root is a TreeNode type from Lintcode lib
+        # write your code here
+        if root is None:
+            return []
+        else:
+            return Solution.postorder_traversal(self,root.left) + Solution.postorder_traversal(self,root.right) + [root.val]
+#time: 102ms, store: 5.87mb rank: 6.8% 卧槽？
+
+# Dijkstra's algorithm
+# Graph:
+#       -> A (5)    -> C (4)    ->(3)
+# start (B->A 8)  (A->D 2)(C ->D 6)  End
+#       -> B (2)    -> D (7)    ->(1)
+class Graph:
+    '''
+    Params: Graph -> dict, vertexs -> list 
+    '''
+    def __init__(self, graph : dict, vertexs : list):
+        self.graph = graph
+        self.vertexs = vertexs
+
+    @property
+    def show(self):
+        return self.graph
+    
+    def addvertex(self, vertex: str) -> int:
+        if not isinstance(vertex, str):
+            raise TypeError('Need str type.')
+        self.vertexs.append(vertex)
+        self.graph[vertex] = {}
+        return self.vertexs.index(vertex)
+    
+    def addpath(self, start_vertex, end_vertex, value : int) -> int:
+        if start_vertex not in self.vertexs:
+            raise Exception('Start Vertex not in this Graph, Please Check!')
+        self.graph[start_vertex][end_vertex] = int(value)
+        if end_vertex not in self.vertexs:
+            self.vertexs.append(end_vertex)
+        return value
+
+    def value(self, start_vertex : str, end_vertex : str) -> int:
+        if start_vertex not in self.graph or end_vertex not in self.graph[start_vertex]:
+            raise Exception('Path Error!')
+        return self.graph[start_vertex][end_vertex]
+    
+def dijk():
+    Dijk = Graph(
+        {'start':{'A': 5, 'B': 2}, 
+         'A':{'C': 4, 'D': 2},
+         'B':{'A': 8, 'D': 7},
+         'C':{'D': 6, 'end': 3},
+         'D':{'end': 1},
+         'end':{}
+         }, 
+        ['start', 'A', 'B', 'C', 'D', 'end']
+        )
+    cost = {'end': 1000}
+    path = {}
 
 if __name__ == '__main__':
     time_start = time()
     #1
-    list1 = [23, 65, 4, 5, 1, 78, 3]
+    #list1 = [23, 65, 4, 5, 1, 78, 3]
     #2
-    s = "pns(i(bhbi)kj()kojs(tzanmj)rxmsl(zkl(i(ggqqeyo)bxht((auwsuuyhzb)cq((jabbcui))cpe(jj))(snd(a(mpe(ooe)ggjp))((k)iudv)acfk(kl(vagyd)c)r)))(y)i)k)))b)))q)(s))kxoy()kg)zbpyk)(ish()yc)ljjc()((qm(hec(zb((d)qvl(stob)y)s)rj)(f)zyf()(uw)dwjuryn)r()qegnfef()hm()nos(zb((suu))eudvoei)(p)ebmqqv)fooe)uiqs)t(ggcuh(uc))"
-    print(bracket_check3(s))
+    #s = "pns(i(bhbi)kj()kojs(tzanmj)rxmsl(zkl(i(ggqqeyo)bxht((auwsuuyhzb)cq((jabbcui))cpe(jj))(snd(a(mpe(ooe)ggjp))((k)iudv)acfk(kl(vagyd)c)r)))(y)i)k)))b)))q)(s))kxoy()kg)zbpyk)(ish()yc)ljjc()((qm(hec(zb((d)qvl(stob)y)s)rj)(f)zyf()(uw)dwjuryn)r()qegnfef()hm()nos(zb((suu))eudvoei)(p)ebmqqv)fooe)uiqs)t(ggcuh(uc))"
+    #print(bracket_check3(s))
     #for _ in range(999999):
     #    bracket_check2(s)
+
+    
+    
     time_end = time()
     print('time cost -> %s' % (time_end - time_start))
