@@ -33,3 +33,12 @@ Use Bisect to search and sort the student's score.
     # the result:
     # >>> ['F', 'A', 'C', 'C', 'B', 'A', 'A']
 ```
+
+### 2.9.2 MemoryView
+
+Python will create a copy of the object in the memory which we are operating，but it'll spend lots of time to finish this work when there comes the float lists containning lots of members, but in fact we don't need create a mapping object so the MemoryView function will be very useful.
+
+MemoryView will return an object without creating the copy object in memory and it'll reduce the memory cost and improve the running speed by using buffer protocol.
+
+Syntax: `MemoryView(Obj) -> Obj`.
+

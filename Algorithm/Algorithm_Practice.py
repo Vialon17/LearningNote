@@ -166,6 +166,61 @@ class Solution:
             return Solution.postorder_traversal(self,root.left) + Solution.postorder_traversal(self,root.right) + [root.val]
 #time: 102ms, store: 5.87mb rank: 6.8% 卧槽？
 
+#有1000个桶，有且仅有一个桶里面装了毒药，其他的都装了水。
+#这些桶从外面看上去完全相同。
+#如果一只猪喝了毒药，它将在15分钟内死去。
+#在一个小时内，至少需要多少只猪才能判断出哪一个桶里装的是毒药呢？
+#(假如一共有 n 个桶，只有一个桶装了毒药。一只猪将在喝完毒药 m 分钟后死去。
+#你需要多少只猪才能在 p 分钟内找出那个装毒药的桶呢？)
+
+def poor_pigs(self, buckets: int, minutes_to_die: int, minutes_to_test: int) -> int:
+    # Write your code here
+    pow_num = 0
+    base = (minutes_to_test // minutes_to_die + 1)
+    if buckets < base:
+            return pow_num
+    while True:
+        if  buckets <= pow(base, pow_num):
+            return pow_num
+        pow_num += 1
+#time: 81ms, store: 5.96mb rank: 79.0%
+
+#Big Guy's code
+def poorPigs(self, buckets, minutesToDie, minutesToTest):
+        pigs = 0
+        while (minutesToTest / minutesToDie + 1) ** pigs < buckets:
+            pigs += 1
+        return pigs
+
+# 给一个整数数组，找到两个数使得他们的和等于一个给定的数 target。
+# 输入： numbers = [15,2,7,11] , target = 9
+# 输出： [1,2]
+def two_sum(self, numbers: List[int], target: int) -> List[int]:
+        # write your code here
+        for i in range(len(numbers)):
+            if (left := (target - numbers[i])) in numbers:                    
+                return [i, numbers.index(left, i + 1)]
+#time: 81ms, store: 5.90mb rank: 95.4%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Dijkstra's algorithm
 # Graph:
 #       -> A (5)    -> C (4)    ->(3)
