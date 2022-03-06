@@ -195,94 +195,38 @@ def poorPigs(self, buckets, minutesToDie, minutesToTest):
 # 给一个整数数组，找到两个数使得他们的和等于一个给定的数 target。
 # 输入： numbers = [15,2,7,11] , target = 9
 # 输出： [1,2]
-def two_sum(self, numbers: List[int], target: int) -> List[int]:
+def two_sum(self, numbers: list, target: int) -> list:
         # write your code here
         for i in range(len(numbers)):
             if (left := (target - numbers[i])) in numbers:                    
                 return [i, numbers.index(left, i + 1)]
 #time: 81ms, store: 5.90mb rank: 95.4%
 
+#给定一张用二维数组表示的网格地图，其中1表示陆地单元格，0表示水域单元格。网格地图中的单元格视为水平/垂直相连（斜向不相连）。这个网格地图四周完全被水域包围着，并且其中有且仅有一个岛（定义为一块或多块相连的陆地单元格）。这个岛不包含湖（定义为不和外围水域相连的水域单元格）。一个地图单元格是边长为1的一个正方形；网格地图是一个矩形，并且它的长和宽不超过100。你要做的是求出这个岛的周长。
+# [ [0,1,0,0],
+#   [1,1,1,0],
+#   [0,1,0,0],
+#   [1,1,0,0] ]
+#   答案:16
 
+class Solution:
+    """
+    @param grid: a 2D array
+    @return: the perimeter of the island
+    """
+    def island_perimeter(self, grid: list) -> int:
+        # Write your code here
+        lost_count = 0
+        perimeter = 0
+        for i in range(len(grid)):
+            for j in range(len(grid[i])):
+                if grid[i][j] == 1:
+                    perimeter += 4
+                    for x, y in [(x,y) for x,y in ((i+1, j), (i-1, j), (i, j-1), (i, j+1)) if x in range(0,len(grid)) and y in range(0, len(grid[x]))]:
+                        if grid[x][y] == 1:
+                            lost_count += 1
+        print(perimeter, lost_count)
+        return perimeter - lost_count
+#logic: need reduce the lost_side_lenght when increase one side length.
+#time: 102ms, store: 6.29mb rank: 40.5%
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Dijkstra's algorithm
-# Graph:
-#       -> A (5)    -> C (4)    ->(3)
-# start (B->A 8)  (A->D 2)(C ->D 6)  End
-#       -> B (2)    -> D (7)    ->(1)
-class Graph:
-    '''
-    Params: Graph -> dict, vertexs -> list 
-    '''
-    def __init__(self, graph : dict, vertexs : list):
-        self.graph = graph
-        self.vertexs = vertexs
-
-    @property
-    def show(self):
-        return self.graph
-    
-    def addvertex(self, vertex: str) -> int:
-        if not isinstance(vertex, str):
-            raise TypeError('Need str type.')
-        self.vertexs.append(vertex)
-        self.graph[vertex] = {}
-        return self.vertexs.index(vertex)
-    
-    def addpath(self, start_vertex, end_vertex, value : int) -> int:
-        if start_vertex not in self.vertexs:
-            raise Exception('Start Vertex not in this Graph, Please Check!')
-        self.graph[start_vertex][end_vertex] = int(value)
-        if end_vertex not in self.vertexs:
-            self.vertexs.append(end_vertex)
-        return value
-
-    def value(self, start_vertex : str, end_vertex : str) -> int:
-        if start_vertex not in self.graph or end_vertex not in self.graph[start_vertex]:
-            raise Exception('Path Error!')
-        return self.graph[start_vertex][end_vertex]
-    
-def dijk():
-    Dijk = Graph(
-        {'start':{'A': 5, 'B': 2}, 
-         'A':{'C': 4, 'D': 2},
-         'B':{'A': 8, 'D': 7},
-         'C':{'D': 6, 'end': 3},
-         'D':{'end': 1},
-         'end':{}
-         }, 
-        ['start', 'A', 'B', 'C', 'D', 'end']
-        )
-    cost = {'end': 1000}
-    path = {}
-
-if __name__ == '__main__':
-    time_start = time()
-    #1
-    #list1 = [23, 65, 4, 5, 1, 78, 3]
-    #2
-    #s = "pns(i(bhbi)kj()kojs(tzanmj)rxmsl(zkl(i(ggqqeyo)bxht((auwsuuyhzb)cq((jabbcui))cpe(jj))(snd(a(mpe(ooe)ggjp))((k)iudv)acfk(kl(vagyd)c)r)))(y)i)k)))b)))q)(s))kxoy()kg)zbpyk)(ish()yc)ljjc()((qm(hec(zb((d)qvl(stob)y)s)rj)(f)zyf()(uw)dwjuryn)r()qegnfef()hm()nos(zb((suu))eudvoei)(p)ebmqqv)fooe)uiqs)t(ggcuh(uc))"
-    #print(bracket_check3(s))
-    #for _ in range(999999):
-    #    bracket_check2(s)
-
-    
-    
-    time_end = time()
-    print('time cost -> %s' % (time_end - time_start))

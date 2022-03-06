@@ -30,6 +30,57 @@ def main():
             'drum_kit': {'piano': 10},
             'guitar': {'piano': 20},
             'piano': None}
+
+# Dijkstra's algorithm
+# Graph:
+#       -> A (5)    -> C (4)    ->(3)
+# start (B->A 8)  (A->D 2)(C ->D 6)  End
+#       -> B (2)    -> D (7)    ->(1)
+class Graph:
+    '''
+    Params: Graph -> dict, vertexs -> list 
+    '''
+    def __init__(self, graph : dict, vertexs : list):
+        self.graph = graph
+        self.vertexs = vertexs
+
+    @property
+    def show(self):
+        return self.graph
     
+    def addvertex(self, vertex: str) -> int:
+        if not isinstance(vertex, str):
+            raise TypeError('Need str type.')
+        self.vertexs.append(vertex)
+        self.graph[vertex] = {}
+        return self.vertexs.index(vertex)
+    
+    def addpath(self, start_vertex, end_vertex, value : int) -> int:
+        if start_vertex not in self.vertexs:
+            raise Exception('Start Vertex not in this Graph, Please Check!')
+        self.graph[start_vertex][end_vertex] = int(value)
+        if end_vertex not in self.vertexs:
+            self.vertexs.append(end_vertex)
+        return value
+
+    def value(self, start_vertex : str, end_vertex : str) -> int:
+        if start_vertex not in self.graph or end_vertex not in self.graph[start_vertex]:
+            raise Exception('Path Error!')
+        return self.graph[start_vertex][end_vertex]
+    
+def dijk():
+    Dijk = Graph(
+        {'start':{'A': 5, 'B': 2}, 
+         'A':{'C': 4, 'D': 2},
+         'B':{'A': 8, 'D': 7},
+         'C':{'D': 6, 'end': 3},
+         'D':{'end': 1},
+         'end':{}
+         }, 
+        ['start', 'A', 'B', 'C', 'D', 'end']
+        )
+    cost = {'end': 1000}
+    path = {}
+
 if __name__ == '__main__':
     main()

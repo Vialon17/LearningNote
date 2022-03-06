@@ -3,6 +3,7 @@
 Here's my notes about the book [fluent python]().  
 -- vialon, Feb, 24, 2022
 
+## 2: Data Structure
 ### 2.8 [Bisect Module](https://docs.python.org/3/library/bisect.html)
 
 __Order list:__
@@ -42,3 +43,26 @@ MemoryView will return an object without creating the copy object in memory and 
 
 Syntax: `MemoryView(Obj) -> Obj`.
 
+### 2.11 Summary
+
+_May it's suitable putting the important knowledge points here, I privately think._
+#### The Function
+
+* Container List: `list`, `tuple`, `collections.deque` (_store different types of data._)
+* Flat List: `str`, `bytes`, `bytearray`, `memoryview`, `array.array` (_data must have same type._)
+* __Listcomps:__
+    
+    ____
+    ```python
+    colors = ['black', 'white']
+    sizes = ['S', 'M', 'L']
+    tshirts = [(color, size) for color in colors for size in sizes]
+    #>>> tshirts
+    # [('black', 'S'), ('black', 'M'), ('black', 'L'), ('white', 'S'), ('white', 'M'), ('white', 'L')]
+    ```
+* __Genexps:__
+    
+    ```python
+
+    ```
+* 
