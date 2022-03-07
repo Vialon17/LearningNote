@@ -52,5 +52,9 @@ There the SQL is the basic for data analysis so there could havn't any reasons f
 
 Let's make it. 😀
 
+## Python
+
+I have learned Python by myself intermittently in last year, but it's necessary for me to improve the comprehension with Python. Once having a try, u'll found the [Fluent Python](./Python/fluent_python.md) is a twinking star that can light up ur way to ~brickyard~ 🤣.
+
 -----
 [^1]: [Good Luck Charlie](https://en.wikipedia.org/wiki/Good_Luck_Charlie): I tried to translate the `Learning Note` and the Yodao gave me this, so that I add it to here because it's funny. _It's a good idea to get touch with the foreign culture if ur a Chinese._ 

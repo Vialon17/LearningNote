@@ -1,9 +1,11 @@
 # Fluent Python
 
-Here's my notes about the book [fluent python]().  
+Here's my notes about the book [fluent python v1](https://hk1lib.org/book/3676951/3d1fce).  
 -- vialon, Feb, 24, 2022
 
-## 2: Data Structure
+_Fluent Python v2(2021) is [here](https://hk1lib.org/book/17194890/bf297b), just have English version._
+
+## 2:: Data Structure
 ### 2.8 [Bisect Module](https://docs.python.org/3/library/bisect.html)
 
 __Order list:__
