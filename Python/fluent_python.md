@@ -52,7 +52,9 @@ _May it's suitable putting the important knowledge points here, I privately thin
 * Flat List: `str`, `bytes`, `bytearray`, `memoryview`, `array.array` (_data must have same type._)
 * __Listcomps:__
     
-    ____
+    __According to Python Cicada and in order to improve the code readablity, we create `list comprehension` and `generator expression` in python.__
+
+    The purpose of Listcomps is just creating a list:
     ```python
     colors = ['black', 'white']
     sizes = ['S', 'M', 'L']
@@ -60,9 +62,24 @@ _May it's suitable putting the important knowledge points here, I privately thin
     #>>> tshirts
     # [('black', 'S'), ('black', 'M'), ('black', 'L'), ('white', 'S'), ('white', 'M'), ('white', 'L')]
     ```
+    _You can also use `if...else...` syntax in it; It's a closure environment._
+
 * __Genexps:__
     
-    ```python
+    Different from Listcoms, Genexps show better in creating iterative list and combining with other list-container. It'll provide great help with the memory cost compared with its brother.  
+    In form, Genexps just replace the '[]' with '()' based on Listcomps.
 
+    ```python
+    colors = ['black', 'white']
+    sizes = ['S', 'M', 'L']
+    for tshirt in ('%s %s' % (c, s) for c in colors for s in sizes): 
+        print(tshirt)
+    #printout -> :
+    #>>> black S
+    #>>> black M
+    #>>> black L
+    #>>> white S
+    #>>> white M
+    #>>> white L
     ```
 * 
