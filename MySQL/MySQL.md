@@ -73,4 +73,12 @@ There have four basic parts in this chapter: Add, delete, set, select and it's e
 
 * __Read and Query__
   
+  Query is the basic part in daily data analysis work, it can help u filter data, integrate data and analyse the necessary data.
+
+  Basic syntax: 
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`select <row.name> from <table.name> (left join <table.name> on <requirement>) where <requirement1> group by <row.name> having <requirement2> order by <row.name> limit <number, page>`
+
+  It seems a little complex, but u can divide into three groups by the order:
+  
+  
 [^1]: u should import the practice SQL data into ur database, here we have three database to practice and it's easy to find some practice questions in mang websites.

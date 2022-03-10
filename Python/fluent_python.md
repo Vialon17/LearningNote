@@ -69,6 +69,7 @@ _May it's suitable putting the important knowledge points here, I privately thin
 * __Genexps:__
     
     Different from Listcoms, Genexps show better in creating iterative list and combining with other list-container. It'll provide great help with the memory cost compared with its brother.  
+
     In form, Genexps just replace the '[]' with '()' based on Listcomps.
 
     ```python
@@ -84,4 +85,51 @@ _May it's suitable putting the important knowledge points here, I privately thin
     #>>> white M
     #>>> white L
     ```
-* 
+    __Function filter and map:__
+
+    **Filter** function receivers two parameters and return an iterative object, it'll filter out the elements which couldn't go through the judge function: 
+
+    &nbsp;&nbsp;&nbsp;**parameter** -> judge function, iterative object.
+    &nbsp;&nbsp;&nbsp;**return** -> generator object.
+
+    _u can use `list()` function to change the object into a list if u need a list._
+
+    ```python
+    a = [1, 2, 4, 'x', 'y', 5]
+    b = filter(lambda c:isinstance(c, int), a)
+    print(b)
+    # >>> <filter object at 0x000001C7385B2F70>
+    list(b)
+    # >>> [1, 2, 4, 5]
+    ```
+
+    ***Map*** function also receivers several parameters and return an iterative object, it'll create a functional mapping among the parameters:
+
+    &nbsp;&nbsp;&nbsp;**parameter** -> function/iterative object.
+    &nbsp;&nbsp;&nbsp;**return** -> generator object.
+
+
+    ```python
+    def square(x):
+        return x ** 2
+    map(square, [1,2,3,4,5])
+    # >>> <map object at 0x100d3d550>
+    list(map(square, [1,2,3,4,5]))
+    # >>> [1, 4, 9, 16, 25]
+    ```
+
+    __Comared__ with combination of filter and map, Listcomps seems like more beautiful. 
+
+    ```python
+    >>> symbols = '$¢£¥€¤'
+    >>> beyond_ascii = [ord(s) for s in symbols if ord(s) > 127]
+    >>> beyond_ascii
+    [162, 163, 165, 8364, 164]
+    >>> beyond_ascii = list(filter(lambda c: c > 127, map(ord, symbols)))
+    >>> beyond_ascii
+    [162, 163, 165, 8364, 164]
+    ```
+
+* **Tuple**
+ 
+    It'a mistake that just regard Tuple as stable List type, this pretty young thing will provide a container to store 
