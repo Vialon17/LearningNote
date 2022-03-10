@@ -76,9 +76,13 @@ There have four basic parts in this chapter: Add, delete, set, select and it's e
   Query is the basic part in daily data analysis work, it can help u filter data, integrate data and analyse the necessary data.
 
   Basic syntax: 
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`select <row.name> from <table.name> (left join <table.name> on <requirement>) where <requirement1> group by <row.name> having <requirement2> order by <row.name> limit <number, page>`
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`select <row.name> from <table.name> (left join <table.name> on <requirement>) where <requirement1> group by <row.name> having <requirement2> order by <row.name> limit <number, page>`
 
-  It seems a little complex, but u can divide into three groups by the order:
+  It seems a little complex, but u can divide into three groups by the program execution order:
   
+  1. Data Source -> `from <table.name> (left/right join <table.name> on <requirement>)`, this SQL command means it'll select data from table1 and table2 and present their **Cartesian Product**  and filter the result by the conditional statement(*requirement*).
+  2. Conditional Statement -> `where <condition1> group by <row.name> having <condition2>`, this command mainly determines the result. 
+      > The execution order is 'where' -> 'group by' -> 'having', u should use the aggregate function like 'max(), min(), sum()',
+  3. Result Filter -> `select <row.name> ... order by <row.name> limit <num, page>`
   
 [^1]: u should import the practice SQL data into ur database, here we have three database to practice and it's easy to find some practice questions in mang websites.
