@@ -299,3 +299,51 @@ def flatten(self, nestedList):
             nestedList = current + nestedList
     return ret
 #may it'll be better than mine.
+
+#切割棒子，每次切花费cost_per_cut, 总共有lengths数组内不通长度的棒子，切成长度相同的短棒子，
+#切完后剩余扔了，每单位棒子给sale_price，求最大利润。
+def max_profit(self, cost_per_cut: int, sale_price: int, lengths: list) -> int:
+        # write your code here
+        profit = 0
+        for l in range(1, max(lengths)):
+            cut_num = 0
+            sale_num = 0
+            for i in lengths:
+                temp_cut = (lambda x, y : x//y if x%y != 0 else x//y - 1)(i,l)
+                cut_num += temp_cut
+                sale_num += i//l
+            temp_profit = sale_price * sale_num * l - cut_num * cost_per_cut
+            if temp_profit >= profit:
+                profit = temp_profit
+        return profit
+#time: 285ms, store: 5.97mb rank: 38.1%
+#暴力穷举
+#考虑可能近似公约数可能存在更贱简略的算法进行解答。
+
+#在给定的数组中，找到出现次数最多的数字。
+#出现次数相同时，返回数值最小的数字。
+def find_number(self, array: list) -> int:
+        # Write your code here.
+        import collections
+        max_num = 0
+        counter = collections.Counter(array)
+        answer = 0
+        max_number = 0
+        for key, value in counter.items():
+            if value > max_number:
+                max_number = value
+                answer = key
+            elif value == max_number and key < answer:
+                answer = key
+        return answer
+#大佬解法
+
+def find_number(self, array: list) -> int:
+        # Write your code here.
+        max_num = 0
+        for i in sorted(array, reverse = 1):
+            if array.count(i) >= array.count(max_num):
+                max_num = i
+        return max_num
+#我的解法，时间复杂度贼高，我就是게憨憨。。。
+#collections库真好用，涨见识了。
