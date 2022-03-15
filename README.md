@@ -44,7 +44,7 @@ I prefer regarding Algorithm as the important core part with the data structure 
 
 Here is where I truely start my programming study. *It's is chaotic,but I'll fix it in my free time.*
 
-## [MySQL](MySQL.md)
+## [MySQL](./MySQL/MySQL.md)
 
 I have to learn MySQL for my job, but I'd prefer the non-relational database MongoDB for its Popularity in recent years. 
 
@@ -54,9 +54,9 @@ Let's make it. 😀
 
 ## Python
 
-I have learned Python by myself intermittently in last year, but it's necessary for me to improve the comprehension with Python. Once having a try, u'll found the [Fluent Python](./Python/fluent_python.md) is a twinking star that can light up ur way to ~~brickyard~~ 🤣.
+I have learned Python by myself intermittently in last year, but it's necessary for me to improve the comprehension with Python. Once having a try, u'll found the [Fluent Python](./Python/fluent_python.md) is a twinking star that can light up ur way to ~~brickyard~~ 🤣.There I put my note of The Fluent Python [here](./Python/fluent_python.md), and i'm studying it now.
 
-There I put my note of The Fluent Python [here](./Python/fluent_python.md), and i'm reading it everyday.
+But if u don't have any programming experience, u'd better make youself familiar with the basic Python syntax and basic computer science knowledge though Python seems like the easiest programming language to learn. The [Runood](https://www.runoob.com/python3/python3-tutorial.html) and [W3Schools](https://www.w3schools.com/python/default.asp) maybe good choices for beginner, and [Offical Docs](https://docs.python.org/zh-cn/3.9/) will offer the long-term support for ur study.
 
 -----
 [^1]: [Good Luck Charlie](https://en.wikipedia.org/wiki/Good_Luck_Charlie): I tried to translate the `Learning Note` and the Yodao gave me this, so that I add it to here because it's funny. _It's a good idea to get touch with the foreign culture if ur a Chinese._
