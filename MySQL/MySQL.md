@@ -37,63 +37,83 @@ There have four basic parts in this chapter: Add, delete, set, select and it's e
 
 ### CRUD(create read update delete)
 
-* __Before Beginning__[^1]
+#### __Before Beginning__[^1]
   
-     * __Install the SQL service__
-     Download the suitable version of [MySQL software](https://dev.mysql.com/downloads/mysql/).
-     You should config the configuration file at first and take care of the client port and service port settings.
-     Then just keep going with this [tutorial](https://www.runoob.com/mysql/mysql-install.html) and finish your installation.
+  * __Install the SQL service__
+  Download the suitable version of [MySQL software](https://dev.mysql.com/downloads/mysql/).
+  You should config the configuration file at first and take care of the client port and service port settings.
+  Then just keep going with this [tutorial](https://www.runoob.com/mysql/mysql-install.html) and finish your installation.
 
-     * __Config the environment variables__
-     Use the `Win + R'` shortcut to run `sysdm.cpl` to find the computer's environment variables setting, which hids in the advanced option.
-     Add the path of MySQL service into the user variables' path dict to run the MySQL in shell.
-     Use the command `mysqld install` in shell with adminstrator to install the service so that you can set the status in `services.msc` and start it with Wndows.
+  * __Config the environment variables__
+  Use the `Win + R'` shortcut to run `sysdm.cpl` to find the computer's environment variables setting, which hids in the advanced option.
+  Add the path of MySQL service into the user variables' path dict to run the MySQL in shell.
+  Use the command `mysqld install` in shell with adminstrator to install the service so that you can set the status in `services.msc` and start it with Wndows.
 
-     * __Connect the SQL Service__
-     * After creating the SQL service and completing the configuration, there we need to connect the database system. U should use the command `mysqld --initialize` to initialize the SQL service and the `terminal` will give u the root administrator's initial password, input the command `mysql -h localhost -P port -u root -p` to connect the local SQl service and if it completed, there will show `mysql>` in the terminal and u can continue ur command with it.  
-      _Notice: u should change the root user's password using the command `alter user set authentication_string=password("123456") where user='root';` at first!_
+  * __Connect the SQL Service__
+  * After creating the SQL service and completing the configuration, there we need to connect the database system. U should use the command `mysqld --initialize` to initialize the SQL service and the `terminal` will give u the root administrator's initial password, input the command `mysql -h localhost -P port -u root -p` to connect the local SQl service and if it completed, there will show `mysql>` in the terminal and u can continue ur command with it.  
+  _Notice: u should change the root user's password using the command `alter user set authentication_string=password("123456") where user='root';` at first!_
     
-* __Create and Insert__
+#### __Create and Insert__
     
-    __Create some datebase about...__
+  __Create some datebase about...__
 
-    _There usually use the simple English words to express the SQL syntax as well as the other programming language:_
+  _There usually use the simple English words to express the SQL syntax as well as the other programming language:_
 
-    > `create database db_name` -> To create DB library;
-    >
-    > `use db_name` -> SWitch the cursor to dbname;
-    >
-    > `create table table_name(column1_name column1_type, column2_name colume2_type, etc)` -> To create an table named tablename in the database library you selected, which includes column1 and column2;
-    >
-    > After creating some empty table, the next thing we should solve is insert data into the target table,
-    >
-    > `insert into table_name(column1, colume2, etc) values(column1, colume2, etc), (column1, colume2, etc)` -> To add data into the target column of the table. *Attention: the numbers of the data should keep equality with the number of the columns.*
+  `create database db_name;` -> To create DB library;
 
-    so we have inserted some data into a table.
+  `use db_name;` -> SWitch the cursor to dbname;
 
-* __Read and Query__
+  `create table table_name(column1_name column1_type, column2_name colume2_type, etc);` -> To create an table named tablename in the database library you selected, which includes column1 and column2;
+
+  After creating some empty table, the next thing we should solve is insert data into the target table,
+
+  `insert into table_name(column1, colume2, etc) values(column1, colume2, etc), (column1, colume2, etc);` -> To add data into the target column of the table. *Attention: the numbers of the data should keep equality with the number of the columns.*
+
+  so we have inserted some data into a table.
+
+#### __Read and Query__
   
   Query is the basic part in daily data analysis work, it can help u filter data, integrate data and analyse the necessary data.
 
   __Basic syntax:__
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`select <row.name> from <table.name> (left join <table.name> on <requirement>) where <requirement1> group by <row.name> having <requirement2> order by <row.name> limit <number, page>`
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`select <col.name> from <table.name> (left join <table.name> on <requirement>) where <requirement1> group by <col.name> having <requirement2> order by <col.name> limit <number, page>;`
 
   It seems a little complex, but u can divide into three groups by the program execution order:
   
-  1. Data Source -> `from <table.name> (left/right join <table.name> on <requirement>)`, this SQL command means it'll select data from table1 and table2 and present their **Cartesian Product**  and filter the result by the conditional statement(*requirement*).
-  2. Conditional Statement -> `where <condition1> group by <row.name> having <condition2>`, this command mainly determines the result. 
+  1. Data Source -> `from <table.name> (left/right join <table.name> on <requirement>);`, this SQL command means it'll select data from table1 and table2 and present their **Cartesian Product**  and filter the result by the conditional statement(*requirement*).
+  2. Conditional Statement -> `where <condition1> group by <col.name> having <condition2>;`, this command mainly determines the result. 
       > The execution order is 'where' -> 'group by' -> 'having', u should use the aggregate function like 'max(), min(), sum()',
-  3. Result Filter -> `select <row.name> ... order by <row.name> limit <num, page>`, this command determines the result we'll select from the association list, and how to show the result: order and page setting.
+  3. Result Filter -> `select <col.name> ... order by <col.name> limit <num, page>;`, this command determines the result we'll select from the association list, and how to show the result: order and page setting.
   
   __Extension:__
   
-  In daily work, we'll combine different queries together.
+  In daily work, it's normal to combine different queries together.
   
   The child quiry will become a part of the father query, it usually plays the role as _result, conditional statement, the combined table._  
   For example:
   ```sql
   select *, (select s_name from students) stu_name from students left join (select s_id, s_name, c_id, c_name from sourc) sources on students.s_id = sources.s_id where sources.s_id in (select s_id from teachers);
   ```
+  _This part is an important baisc part of SQl._
   
+#### __Update and Delete__
+
+  We use these two commands to realize update/delete data operation.
+
+  __Basic Syntax__
+
+  * Update: `update <table_name> set <col.name1> = <value1>, <col.name2> = <value2> where <conditional statement>;`
+  * Delete Data: `delete from <table_name> where  <conditional statement>;`  
+    Delete Database: `drop database <database_name>;`
+    Delect Table: `drop table <table_name>;`
+
+  __Difference between `drop`, `delect` and `truncate`:__
+
+  `Delete` command just do the special data deletion from table, but when the condition is set refer to the whole table, it seems like the `truncate table <table_name>` statement.
+
+  It shows that Delete and Truncate won't delete table itself but this table's content, with the Drop command will delete the table wholly from database.
+
+  **`Delect` command is a DML program statement, which means roll back operation is callable while `drop` and `truncate` are DLL statement without roll-back.**
+
 
 [^1]: u should import the practice SQL data into ur database, here we have three database to practice and it's easy to find some practice questions in mang websites.

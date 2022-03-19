@@ -388,3 +388,12 @@ def array_game(arr: list) -> int:
         return num
 #time: 142ms, store: 14.53mb rank: 93.5%
 #看了题解发现逆向思维，max - min思路
+
+def two_sum_v_i_i(self, nums: list, target: int) -> list:
+    # write your code here
+    temp_list = []
+    for i in range(len(nums)):
+        left_num = target - nums[i]
+        if left_num in nums and (loc := nums.index(left_num)) > i:
+            temp_list.append([i, loc])
+    return temp_list
