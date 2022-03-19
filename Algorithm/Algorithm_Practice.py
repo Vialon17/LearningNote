@@ -347,3 +347,44 @@ def find_number(self, array: list) -> int:
         return max_num
 #我的解法，时间复杂度贼高，我就是게憨憨。。。
 #collections库真好用，涨见识了。
+
+#给定一个由N个整数组成的数组A，一次移动，我们可以选择此数组中的任何元素并将其替换为任何值。数组的振幅是数组A中的最大值和最小值之间的差。返回通过执行最多三次替换之后数组A的最小振幅。
+#输入:A = [-9, 8, -1]输出: 0解释：可以将 -9 和 8 替换成-1，这样所有元素都等于 -1，所以振幅是0
+#输入:A = [14, 10, 5, 1, 0]输出: 1解释：为了实现振幅是1，我们可以将 14，10，5 替换成 1 或者 0
+#输入:A = [11, 0, -6, -1, -3, 5]输出: 3解释：可以将11，-6，5都换成-2
+
+def minimum_amplitude(a: list) -> int:
+    # write your code here
+    temp_list = sorted(a)
+    if len(temp_list) <= 4:
+            return 0
+    num_abs = lambda x, y: abs(temp_list[x] - temp_list[y])
+    num_range = [(x, x-4) for x in range(0,4)]
+    return min([num_abs(x,y) for x,y in num_range])
+#time: 101ms, store: 6.47mb rank: 77.7%
+#思路错了卡壳了好久，。
+
+#DL's code
+def minimum_amplitude(a: list) -> int:
+        if len(a) <= 4:
+            return 0
+        a.sort()
+        res = float('inf')
+        for i in range(4):  # must 4, not 3
+            res = min(res, a[-1-i] - a[3-i]) # a[N-1-i] is the same as a[-1-i], but much slower
+        return res
+#思路就是这样的。
+
+#给定一个整数数组，请算出让所有元素相同的最小步数。每一步你可以选择一个元素，使得其他元素全部加1。
+#输入:[3, 4, 6, 6, 3]，输出:7
+def array_game(arr: list) -> int:
+        # write your code here
+        min_num = min(arr)
+        num = 0
+        for i in arr:
+            if i == min_num:
+                continue
+            num += (i - min_num)
+        return num
+#time: 142ms, store: 14.53mb rank: 93.5%
+#看了题解发现逆向思维，max - min思路
