@@ -5,6 +5,12 @@ Here's my notes about the book [fluent python v1](https://hk1lib.org/book/367695
 
 _Fluent Python v2(2021) is [here](https://hk1lib.org/book/17194890/bf297b), just have English version._
 
+**Before Reading**
+
+Let me explain the structure of this file.
+
+It won't contain all points but some parts that I think is important in Fluent Python. But I make a summary for every chapter in order to review in the future.
+
 ## 2:: Data Structure
 ### 2.8 [Bisect Module](https://docs.python.org/3/library/bisect.html)
 
@@ -48,10 +54,13 @@ Syntax: `MemoryView(Obj) -> Obj`.
 ### 2.11 Summary
 
 _May it's suitable putting the important knowledge points here, I privately think._
+
 #### The Function
 
 * Container List: `list`, `tuple`, `collections.deque` (_store different types of data._)
+  
 * Flat List: `str`, `bytes`, `bytearray`, `memoryview`, `array.array` (_data must have same type._)
+  
 * __Listcomps:__
     
     __According to Python Cicada and in order to improve the code readablity, we create `list comprehension` and `generator expression` in python.__
@@ -132,4 +141,11 @@ _May it's suitable putting the important knowledge points here, I privately thin
 
 * **Tuple**
  
-    It'a mistake that just regard Tuple as stable List type, this pretty young thing will provide a container to store 
+    __It's__ a mistake that just regard Tuple as stable List type, this pretty young thing will provide a container to store separate data and their location information.
+
+    **Different from List, Tuple is usually used to store mussy or no-named data while List always contains data with same type.**
+
+    * **Unpark Tuple**
+
+        
+        

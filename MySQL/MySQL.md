@@ -25,7 +25,7 @@ About the history of SQL, you can visit the [WiKi Page]((https://wikipedia.org/w
 
 The __MySQL__:
 
-which is know as the most popular SQL tripartite in recent 20 years, has been used in most internet companies all over the world, it began as an opening source software at first but was been bought by [The Oracle Company](https://www.oracle.com/index.html) finally in 2009. It has become a component of the four masterpieces which is called [LAMP](https://wikipedia.org/wiki/LAMP) of opening source softwares.
+which is know as the most popular SQL tripartite in recent 20 years, has been used in most internet companies all over the world, it began as an opening source software at first but was been bought by [The Oracle Company](https://www.oracle.com/index.html) finally in 2009. It has become a component of the four masterpieces which is called [LAMP](https://en.wikipedia.org/wiki/LAMP_(software_bundle)) of opening source softwares.
 
 And here is its [Wiki page](https://wikipedia.org/wiki/MySQL) that you can find more information about it.
 

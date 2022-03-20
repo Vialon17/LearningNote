@@ -263,15 +263,14 @@ Just like this:
 * When there comes the conflict in Hash table, we can store the value in the neighboring vacancy(the next 'None' default vacancy) to improve the table's utilization.<br> It's better to use another Hash function to locate those conflict keys.  
   For example:
     > The Hash Table:
-        >>{0 : '77', 1: None, 2: None, 3: None, 4: '26', 5:'93', 6: '17', 7: None, 8: None, 9: '31', 10: '54'}<br>
-        >>Instruction:<br>
-            >>>the hash function's rule:
-               >>>> Use the key divide by the length of the hash table,leave the remainder as the index to store the key.
-               >>>>
-            >>>so there we can store the 77 in index zero, 26 in index 4th and so on.
-            >>>       
-    >>But when we store 44 into this hash table, there should have a function to solve the conflict between 77 and 44, the strategy is that: use the Next None vacancy(1+ n^2), so we store the 44 in the index of 2rd, we have to value 'n' 2(f(n) = 5) if the 2rd has its value so that the 44 is stored in 5th vacancy.<br>
-    >Just like this...
+        > {0 : '77', 1: None, 2: None, 3: None, 4: '26', 5:'93', 6: '17', 7: None, 8: None, 9: '31', 10: '54'}<br>
+    > Instruction:<br>
+        >> the hash function's rule:
+           > Use the key divide by the length of the hash table,leave the remainder as the index to store the key.
+        >> so there we can store the 77 in index zero, 26 in index 4th and so on.
+    >    
+    > But when we store 44 into this hash table, there should have a function to solve the conflict between 77 and 44, the strategy is that: use the Next None vacancy(1+ n^2), so we store the 44 in the index of 2rd, we have to value 'n' 2(f(n) = 5) if the 2rd has its value so that the 44 is stored in 5th vacancy.<br>
+    > Just like this...
 
 **`Load Factor`**:the utilization of the hash table, and is always expressed as the divider of the numbers of the elements and the length of the table[^2].
 $$
@@ -351,12 +350,12 @@ Hill Sort seems like the combination of several simple Insert Sort. In fact, it 
 Here  it's the steps:
 * Sort the list `properly`;<br>
   
-    >What means property? Well, that's a good question, we could do the limit for sorting so that we get n lists for which list whose length is n or the list itself.  
+    > Appropriate, what this means? Well, that's a good question, we could do the limit for sorting so that we get n lists for which list whose length is n or the list itself.  
     >The purpose of the previous sort is to reduce the unnecessary steps in the following sort, so it's a good thought dividing the list into several parts and keeping the balance between the sorting steps.
 
 * Do the previous sort for the several parts of the list(Using Insert Sort);
 
-    >There have the listA = [26, 87, 19], listB = [16, 53, 24], listC = [44, 95, 31], so we do the following:  
+    > There have the listA = [26, 87, 19], listB = [16, 53, 24], listC = [44, 95, 31], so we do the following:  
     > ```
     > list = [26, 87, 19, 16, 53, 24, 44, 95, 31];
     > listA = [26, 87, 19], listB = [16, 53, 24], listC = [44, 95, 31];
