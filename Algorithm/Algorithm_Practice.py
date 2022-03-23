@@ -187,19 +187,19 @@ def poor_pigs(self, buckets: int, minutes_to_die: int, minutes_to_test: int) -> 
 
 #Big Guy's code
 def poorPigs(self, buckets, minutesToDie, minutesToTest):
-        pigs = 0
-        while (minutesToTest / minutesToDie + 1) ** pigs < buckets:
-            pigs += 1
-        return pigs
+    pigs = 0
+    while (minutesToTest / minutesToDie + 1) ** pigs < buckets:
+        pigs += 1
+    return pigs
 
 # 给一个整数数组，找到两个数使得他们的和等于一个给定的数 target。
 # 输入： numbers = [15,2,7,11] , target = 9
 # 输出： [1,2]
 def two_sum(self, numbers: list, target: int) -> list:
         # write your code here
-        for i in range(len(numbers)):
-            if (left := (target - numbers[i])) in numbers:                    
-                return [i, numbers.index(left, i + 1)]
+    for i in range(len(numbers)):
+        if (left := (target - numbers[i])) in numbers:                    
+            return [i, numbers.index(left, i + 1)]
 #time: 81ms, store: 5.90mb rank: 95.4%
 
 #给定一张用二维数组表示的网格地图，其中1表示陆地单元格，0表示水域单元格。网格地图中的单元格视为水平/垂直相连（斜向不相连）。这个网格地图四周完全被水域包围着，并且其中有且仅有一个岛（定义为一块或多块相连的陆地单元格）。这个岛不包含湖（定义为不和外围水域相连的水域单元格）。一个地图单元格是边长为1的一个正方形；网格地图是一个矩形，并且它的长和宽不超过100。你要做的是求出这个岛的周长。
@@ -273,14 +273,14 @@ class Solution:
 #输出：[1,1,2,1,1]
 
 def flatten(self, nestedList):
-        # Write your code here
-        temp_list = []
-        for i in nestedList:
-            if isinstance(i, list):
-                temp_list.extend(flatten(i))
-            else:
-                temp_list.append(i)
-        return temp_list
+    # Write your code here
+    temp_list = []
+    for i in nestedList:
+        if isinstance(i, list):
+            temp_list.extend(flatten(i))
+        else:
+            temp_list.append(i)
+    return temp_list
 #time: 1125ms, store: 18.2mb rank: 55.8%
 #endless recursive.
 
@@ -303,19 +303,19 @@ def flatten(self, nestedList):
 #切割棒子，每次切花费cost_per_cut, 总共有lengths数组内不通长度的棒子，切成长度相同的短棒子，
 #切完后剩余扔了，每单位棒子给sale_price，求最大利润。
 def max_profit(self, cost_per_cut: int, sale_price: int, lengths: list) -> int:
-        # write your code here
-        profit = 0
-        for l in range(1, max(lengths)):
-            cut_num = 0
-            sale_num = 0
-            for i in lengths:
-                temp_cut = (lambda x, y : x//y if x%y != 0 else x//y - 1)(i,l)
-                cut_num += temp_cut
-                sale_num += i//l
-            temp_profit = sale_price * sale_num * l - cut_num * cost_per_cut
-            if temp_profit >= profit:
-                profit = temp_profit
-        return profit
+    # write your code here
+    profit = 0
+    for l in range(1, max(lengths)):
+        cut_num = 0
+        sale_num = 0
+        for i in lengths:
+            temp_cut = (lambda x, y : x//y if x%y != 0 else x//y - 1)(i,l)
+            cut_num += temp_cut
+            sale_num += i//l
+        temp_profit = sale_price * sale_num * l - cut_num * cost_per_cut
+        if temp_profit >= profit:
+            profit = temp_profit
+    return profit
 #time: 285ms, store: 5.97mb rank: 38.1%
 #暴力穷举
 #考虑可能近似公约数可能存在更贱简略的算法进行解答。
@@ -323,28 +323,28 @@ def max_profit(self, cost_per_cut: int, sale_price: int, lengths: list) -> int:
 #在给定的数组中，找到出现次数最多的数字。
 #出现次数相同时，返回数值最小的数字。
 def find_number(self, array: list) -> int:
-        # Write your code here.
-        import collections
-        max_num = 0
-        counter = collections.Counter(array)
-        answer = 0
-        max_number = 0
-        for key, value in counter.items():
-            if value > max_number:
-                max_number = value
-                answer = key
-            elif value == max_number and key < answer:
-                answer = key
-        return answer
+    # Write your code here.
+    import collections
+    max_num = 0
+    counter = collections.Counter(array)
+    answer = 0
+    max_number = 0
+    for key, value in counter.items():
+        if value > max_number:
+            max_number = value
+            answer = key
+        elif value == max_number and key < answer:
+            answer = key
+    return answer
 #大佬解法
 
 def find_number(self, array: list) -> int:
-        # Write your code here.
-        max_num = 0
-        for i in sorted(array, reverse = 1):
-            if array.count(i) >= array.count(max_num):
-                max_num = i
-        return max_num
+    # Write your code here.
+    max_num = 0
+    for i in sorted(array, reverse = 1):
+        if array.count(i) >= array.count(max_num):
+            max_num = i
+    return max_num
 #我的解法，时间复杂度贼高，我就是게憨憨。。。
 #collections库真好用，涨见识了。
 
@@ -366,13 +366,13 @@ def minimum_amplitude(a: list) -> int:
 
 #DL's code
 def minimum_amplitude(a: list) -> int:
-        if len(a) <= 4:
-            return 0
-        a.sort()
-        res = float('inf')
-        for i in range(4):  # must 4, not 3
-            res = min(res, a[-1-i] - a[3-i]) # a[N-1-i] is the same as a[-1-i], but much slower
-        return res
+    if len(a) <= 4:
+        return 0
+    a.sort()
+    res = float('inf')
+    for i in range(4):  # must 4, not 3
+        res = min(res, a[-1-i] - a[3-i]) # a[N-1-i] is the same as a[-1-i], but much slower
+    return res
 #思路就是这样的。
 
 #给定一个整数数组，请算出让所有元素相同的最小步数。每一步你可以选择一个元素，使得其他元素全部加1。
@@ -397,3 +397,98 @@ def two_sum_v_i_i(self, nums: list, target: int) -> list:
         if left_num in nums and (loc := nums.index(left_num)) > i:
             temp_list.append([i, loc])
     return temp_list
+
+#删除链表中等于给定值 val 的所有节点。
+#输入：head = 1->2->3->3->4->5->3->null, val = 3
+#输出：1->2->4->5->null
+#输入：head = 1->1->null, val = 1
+#输出：null
+"""
+Definition of ListNode:
+class ListNode(object):
+    def __init__(self, val, next=None):
+        self.val = val
+        self.next = next
+"""
+
+def remove_elements(head: ListNode, val: int) -> ListNode:
+    # write your code here
+    re_head = head
+    while head is not None:
+        if head.val == val:
+            re_head = head.next
+        elif head.next is not None:
+            if head.next.val == val:
+                head.next = head.next.next
+                continue
+        head = head.next
+    return re_head
+#time: 81ms, store: 7.25mb rank: 99.8%
+#该题通过率仅24%，不忍滑稽一下~~~
+#不过也思考了很长时间，
+#题解：
+#核心问题是出现指定值后进行链表后置操作，
+#同时也要考虑开端和next的next的value值出现指定值/None的情况。
+
+#给一个n*m大小的矩阵，寻找矩阵中所有比邻居（上下左右，对角也算，不考虑边界，即8个）都严格大的点。返回一个n*m大小的矩阵，如果原矩阵中的点比邻居都严格大，则该置为1，反之为0。
+'''
+输入:
+    1 2 3
+    4 5 8
+    9 7 0
+输出:
+    0 0 0
+    0 0 1
+    1 0 0
+'''
+def highpoints(self, grid: list) -> list:
+    # write your code here
+    row = len(grid)
+    col = len(grid[0])
+    # -1,-1 -1,0 -1,1     0,-1 0,1        1,-1 1,0 1,1
+    num = lambda x, y:[(x, y) for x, y in [(x-1, y-1), (x-1, y), (x-1, y+1), (x, y-1), (x, y+1), (x+1, y-1), (x+1, y), (x+1, y+1)]]
+    num_range = lambda a, b : [(x, y) for x,y in num(a, b) if x in range(col) and y in range(row)]
+    re_list = [[0 for i in range(col)] for i in range(row)]
+    for i in range(row):
+        for j in range(col):
+            num_list = [grid[x][y] for x, y in num_range(i, j)]
+            if num_list == [] or grid[i][j] > max(num_list):
+                re_list[i][j] = 1
+    return re_list
+#time: 387ms, store: 7.35mb rank: 1.20%
+#全列表推导式，笑死我了哈哈哈。。。
+#思路并无错误，看了rank上游代码，一堆for循环，并不pythonic，懒得放在这里了。
+#这道题很喵~~~
+
+#给您一个字符串形式的C ++文件（每行是一个字符串），我们希望您在注释行中找到“ Google”。如果注释行中有“ Google”，则返回true，否则返回false。
+#C++有两种注释方式，一种是单行注释 //，代表着//后面的本行内容均为注释，另一种是多行注释，/* 和*/ 这两者之间的部分均为注释。
+'''
+输入: 
+    S = ["#include<bits/stdc++.h>","using namespace std;","//Google test","int main(){","return 0;","}"]
+输出: 
+    true
+输入: 
+    S = ["#include<bits/stdc++.h>","using namespace std;","int main(){","int Google = 0","return 0;","}"]
+输出: 
+    false
+说明: 
+    google不在注释行内。
+'''
+def find_google(self, s: list) -> bool:
+    # Write your code here.
+    index_ = lambda x, y:y.index(x)
+    note_statue = 0
+    for i in s:
+        if '//' in i:
+            if 'Google' in i and index_('//', i) < index_('Google', i):
+                return True
+            continue
+        elif '/*' in i:
+            note_statue = 1
+            if 'Google' in i and index_('/*', i) < index_('Google', i):
+                return True
+        elif '*/' in i:
+            note_statue = 0
+        elif note_statue == 1 and 'Google' in i:
+            return True
+    return False
