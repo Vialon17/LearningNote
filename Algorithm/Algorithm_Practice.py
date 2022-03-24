@@ -411,7 +411,8 @@ class ListNode(object):
         self.next = next
 """
 
-def remove_elements(head: ListNode, val: int) -> ListNode:
+def remove_elements(head, val: int):
+    # head: ListNode
     # write your code here
     re_head = head
     while head is not None:
@@ -492,3 +493,25 @@ def find_google(self, s: list) -> bool:
         elif note_statue == 1 and 'Google' in i:
             return True
     return False
+#https://www.lintcode.com/problem/1883/
+def TopkKeywords(k, keywords, reviews):
+    temp_list = []
+    key_sort = sorted(keywords)
+    for i in key_sort:
+        temp_count = 0
+        for j in reviews:
+            if i in j or i.capitalize() in j:
+                temp_count += 1
+        temp_list.append((i, temp_count))
+    order = lambda x: x[1]
+    temp_list.sort(key = order, reverse = True)
+    print(temp_list)
+    re_list = []
+    if len(temp_list) > k:
+        for x in range(k):
+            re_list.append(temp_list[x][0]) 
+    else:
+        for x in range(len(temp_list)):
+            re_list.append(temp_list[x][0]) 
+    return re_list
+#这道题懒得copy了。。。
