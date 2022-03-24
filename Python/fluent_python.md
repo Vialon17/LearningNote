@@ -9,20 +9,30 @@ _Fluent Python v2(2021) is [here](https://hk1lib.org/book/17194890/bf297b), just
 
 Let me explain the structure of this file.
 
-It won't contain all points but some parts that I think is important in Fluent Python. But I make a summary for every chapter in order to review in the future.
+It won't contain all points but some parts that I think is important in Fluent Python. I divide every chapter into three parts: the important point, the baisc konwlegde point and the summary.
+
+-----
 
 ## 2:: Data Structure
+
+***Part - 1: Other Important Point***
+
 ### 2.8 [Bisect Module](https://docs.python.org/3/library/bisect.html)
 
 __Order list:__
-> * `list.sort()` -> return None, __but has changed the list object itself!__
-> * `sorted(list)` -> return [Ordered NewList], never change the list but created a new list object.
-> * parameter(_Both_): list, reverse = false, key = (identity function)
-> * the difference:
->   * The `list.sort()` function is a list build-in function;
->   * `sorted()` function is a default function;
->   * The return, the list itsele is changed or not; 
-> 
+
+* `list.sort()` -> return None, __but has changed the list object itself!__
+  
+* `sorted(list)` -> return [Ordered NewList], never change the list but created a new list object.
+  
+* parameter(_Both_): list, reverse = false, key = (identity function)
+  
+* the difference:
+  
+  * The `list.sort()` function is a list build-in function;
+  * `sorted()` function is a default function;
+  * The return, the list itsele is changed or not; 
+ 
 
 It's very useful to use this module to control the `ordered list`.
 
@@ -51,50 +61,44 @@ MemoryView will return an object without creating the copy object in memory and 
 
 Syntax: `MemoryView(Obj) -> Obj`.
 
-### 2.11 Summary
+--------
 
-_May it's suitable putting the important knowledge points here, I privately think._
+***Part - 2: Basic Knowledge Point***
 
-#### The Function
-
-* Container List: `list`, `tuple`, `collections.deque` (_store different types of data._)
-  
-* Flat List: `str`, `bytes`, `bytearray`, `memoryview`, `array.array` (_data must have same type._)
-  
-* __Listcomps:__
+### Listcomps:
     
-    __According to Python Cicada and in order to improve the code readablity, we create `list comprehension` and `generator expression` in python.__
+  __According to Python Cicada and in order to improve the code readablity, we create `list comprehension` and `generator expression` in python.__
 
-    The purpose of Listcomps is just creating a list:
-    ```python
-    colors = ['black', 'white']
-    sizes = ['S', 'M', 'L']
-    tshirts = [(color, size) for color in colors for size in sizes]
-    #>>> tshirts
-    # [('black', 'S'), ('black', 'M'), ('black', 'L'), ('white', 'S'), ('white', 'M'), ('white', 'L')]
-    ```
-    _You can also use `if...else...` syntax in it; It's a closure environment._
+  The purpose of Listcomps is just creating a list:
+  ```python
+  colors = ['black', 'white']
+  sizes = ['S', 'M', 'L']
+  tshirts = [(color, size) for color in colors for size in sizes]
+  #>>> tshirts
+  # [('black', 'S'), ('black', 'M'), ('black', 'L'), ('white', 'S'), ('white', 'M'), ('white', 'L')]
+  ```
+  _You can also use `if...else...` syntax in it; It's a closure environment._
 
-* __Genexps:__
+### Genexps:
     
-    Different from Listcoms, Genexps show better in creating iterative list and combining with other list-container. It'll provide great help with the memory cost compared with its brother.  
+  Different from Listcoms, Genexps show better in creating iterative list and combining with other list-container. It'll provide great help with the memory cost compared with its brother.  
 
-    In form, Genexps just replace the '[]' with '()' based on Listcomps.
+  In form, Genexps just replace the '[]' with '()' based on Listcomps.
 
-    ```python
-    colors = ['black', 'white']
-    sizes = ['S', 'M', 'L']
-    for tshirt in ('%s %s' % (c, s) for c in colors for s in sizes): 
-        print(tshirt)
-    #printout -> :
-    #>>> black S
-    #>>> black M
-    #>>> black L
-    #>>> white S
-    #>>> white M
-    #>>> white L
-    ```
-    __Function filter and map:__
+  ```python
+  colors = ['black', 'white']
+  sizes = ['S', 'M', 'L']
+  for tshirt in ('%s %s' % (c, s) for c in colors for s in sizes): 
+      print(tshirt)
+  #printout -> :
+  #>>> black S
+  #>>> black M
+  #>>> black L
+  #>>> white S
+  #>>> white M
+  #>>> white L
+  ```
+  * __Function filter and map:__
 
     **Filter** function receivers two parameters and return an iterative object, it'll filter out the elements which couldn't go through the judge function: 
 
@@ -127,7 +131,7 @@ _May it's suitable putting the important knowledge points here, I privately thin
     # >>> [1, 4, 9, 16, 25]
     ```
 
-    __Comared__ with combination of filter and map, Listcomps seems like more beautiful. 
+    __Comared__ with combination of filter and map, Listcomps seems like more pythonic[^1]. 
 
     ```python
     >>> symbols = '$¢£¥€¤'
@@ -139,13 +143,59 @@ _May it's suitable putting the important knowledge points here, I privately thin
     [162, 163, 165, 8364, 164]
     ```
 
-* **Tuple**
+### Tuple
  
-    __It's__ a mistake that just regard Tuple as stable List type, this pretty young thing will provide a container to store separate data and their location information.
+__It's__ a mistake that just regard Tuple as stable List type, this pretty young thing will provide a container to store separate data and their location information.
 
-    **Different from List, Tuple is usually used to store mussy or no-named data while List always contains data with same type.**
+**Different from List, Tuple is usually used to store mussy or no-named data while List always contains data with same type.**
 
-    * **Unpark Tuple**
+* **Unpark Tuple**
 
-        
-        
+  __We__ can combine the mussy data into several useful groups through Tuple Unpark or extract the useful data from tuple if there have some useless informations. 
+  
+  _In fact, the List type is also support with the unpark operation._
+
+  ```python
+  metro_areas = ('Tokyo','JP',36.933,(35.689722,139.691667))
+  city, country, pop, location = metro_areas
+  print(city, country, pop, location)
+  # >>> Tokyo JP 36.933 (35.689722, 139.691667)
+  # we just want the city and location
+  city, *other, (_, latitude) = metro_areas
+  print(city, other, latitude)
+  # >>> Tokyo ['JP', 36.933] 139.691667
+  ```
+
+  __Yes__, it's a good idea using `_` _placeholder_ and `*` operator to deal with the remainder, but the operator `*` should appear just once time in a single code line. And we can find it that the unpark operation can be used in nested tuple.
+
+* **NamedTuple**
+
+    __NamedTuple__ is a factory function, which creates a named-tuple template class and can be very useful in analyse data and debug code.
+
+    __NameTuple__ inherits most property from Tuple 
+    ```python
+    from collections import namedtuple
+    # It's packed in collections module
+    city = namedtuple('city', 'name country population coordinates')
+    Tokyo = city('Tokyo', 'JP', 36.933, (35.689722, 139.691667))
+    print(Tokyo.country, Tokyo.population, Tokyo.coordinates)
+    # >>> JP 36.933 (35.689722, 139.691667)
+    print(Tokyo[1])
+    # >>> JP
+    ```
+------
+
+***Part - 3: The Summary***
+
+### 2.11 Summary
+
+_May it's suitable putting the important knowledge points here, I privately think._
+
+#### The Function
+
+* Container List: `list`, `tuple`, `collections.deque` (_store different types of data._)
+  
+* Flat List: `str`, `bytes`, `bytearray`, `memoryview`, `array.array` (_data must have same type._)
+  
+------
+[^1] [The Zen of Python](https://peps.python.org/pep-0020/) -> Pythonic: Firstly, as a python engineer, we must walk like a python and this way is called pythonic 😗.
