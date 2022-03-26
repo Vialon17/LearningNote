@@ -515,3 +515,21 @@ def TopkKeywords(k, keywords, reviews):
             re_list.append(temp_list[x][0]) 
     return re_list
 #这道题懒得copy了。。。
+#列表删除指定个数个元素后，使列表长度重复度最高。
+#输入：
+    [1,1,1,2,2,3]
+    2
+#输出：
+    2
+def min_item(ids: list, m: int) -> int:
+    # write your code here
+    from collections import Counter
+    count = sorted(Counter(ids).values(), reverse = True)
+    if count == [1]:
+        return 0
+    while count and count[-1] <= m:
+        value = count.pop()
+        m -= value
+    return len(count)
+#time: 162ms, store: 18.11mb rank: 67.7%
+#为保证运行时间，使用HASH的字典，典型的空间换时间，贪婪算法。

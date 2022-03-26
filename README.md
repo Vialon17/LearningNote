@@ -29,6 +29,12 @@ I prefer construing the Algorithm as an abstract access to resolve some similar 
 
     _May it be a parter with the C++/Python learning in a year, but I would finish the basic with a month I think._
 
+    _-- Update 2022, March, 26_
+
+    I had finished the basic part several days ago and also did some algorithm practice on [LintCode](https://www.lintcode.com), but it's obvious that more exercises and competitions are necessary for my study.
+
+    So it's time to get through the tough day and the [Algorithms 4th Edition](https://hk1lib.org/book/2738376/3dc280)! making deep comprehension with Data Structure seems also important.
+
 * __Machine/Deep learning__
   
     The core part.

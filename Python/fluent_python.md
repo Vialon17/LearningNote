@@ -15,7 +15,7 @@ It won't contain all points but some parts that I think is important in Fluent P
 
 ## 2:: Data Structure
 
-***Part - 1: Other Important Point***
+***Part - 1: Other Important Points***
 
 ### 2.8 [Bisect Module](https://docs.python.org/3/library/bisect.html)
 
@@ -63,7 +63,7 @@ Syntax: `MemoryView(Obj) -> Obj`.
 
 --------
 
-***Part - 2: Basic Knowledge Point***
+***Part - 2: Basic Knowledge Points***
 
 ### Listcomps:
     
@@ -78,6 +78,8 @@ Syntax: `MemoryView(Obj) -> Obj`.
   # [('black', 'S'), ('black', 'M'), ('black', 'L'), ('white', 'S'), ('white', 'M'), ('white', 'L')]
   ```
   _You can also use `if...else...` syntax in it; It's a closure environment._
+
+----
 
 ### Genexps:
     
@@ -131,7 +133,7 @@ Syntax: `MemoryView(Obj) -> Obj`.
     # >>> [1, 4, 9, 16, 25]
     ```
 
-    __Comared__ with combination of filter and map, Listcomps seems like more pythonic[^1]. 
+    __Comared__ with combination of filter and map, Listcomps seems like more pythonic.[^1]
 
     ```python
     >>> symbols = '$¢£¥€¤'
@@ -142,6 +144,7 @@ Syntax: `MemoryView(Obj) -> Obj`.
     >>> beyond_ascii
     [162, 163, 165, 8364, 164]
     ```
+-----
 
 ### Tuple
  
@@ -166,7 +169,7 @@ __It's__ a mistake that just regard Tuple as stable List type, this pretty young
   # >>> Tokyo ['JP', 36.933] 139.691667
   ```
 
-  __Yes__, it's a good idea using `_` _placeholder_ and `*` operator to deal with the remainder, but the operator `*` should appear just once time in a single code line. And we can find it that the unpark operation can be used in nested tuple.
+  __Yes__, it's a good idea using `_` _placeholder_ and `*` operator to deal with the remainder, but the operator `*` should appear just once time in a single code line. Seemingly we can also found it that the unpark operation can be used in nested tuple.
 
 * **NamedTuple**
 
@@ -198,4 +201,4 @@ _May it's suitable putting the important knowledge points here, I privately thin
 * Flat List: `str`, `bytes`, `bytearray`, `memoryview`, `array.array` (_data must have same type._)
   
 ------
-[^1] [The Zen of Python](https://peps.python.org/pep-0020/) -> Pythonic: Firstly, as a python engineer, we must walk like a python and this way is called pythonic 😗.
+[^1]: [The Zen of Python](https://peps.python.org/pep-0020/) -> Pythonic: Firstly, as a python engineer, we must walk like a python and this way is called pythonic 😗.
