@@ -533,3 +533,67 @@ def min_item(ids: list, m: int) -> int:
     return len(count)
 #time: 162ms, store: 18.11mb rank: 67.7%
 #为保证运行时间，使用HASH的字典，典型的空间换时间，贪婪算法。
+
+#链表系列
+class ListNode(object):
+    def __init__(self, val, next=None):
+        self.val = val
+        self.next = next
+
+#给定一个单链表和数值x，划分链表使得所有小于x的节点排在大于等于x的节点之前。你应该保留两部分内链表节点原有的相对顺序。
+'''
+输入：
+    list = 1->4->3->2->5->2->null
+    x = 3
+输出：
+    1->2->2->4->3->5->null
+'''
+def partition(head, x: int):
+    # write your code here
+    left, right = ListNode(0), ListNode(0)
+    now, right_str= left, right
+    while head:
+        if head.next is None:
+            right.next = None; break
+        elif head.val < x:
+            left.next = head; left = left.next
+        else:
+            right.next = head; right = right.next
+        head = head.next
+    left.next = right_str.next
+    return now.next
+#time: 102ms, store: 6.02mb rank: 10.0%
+#思路：
+# 1，分别创建前置链表和后置链表后进行连接。
+# 2，也可以进行冒泡排序，不过时间复杂度不是太友好。
+# 3，最直接可以转换为数组后进行处理后重新整合为链表。
+
+#给定一个带有头结点 head 的非空单链表，返回链表的中间结点。
+'''
+    输入 1->2->3->4->5->null
+    输出 3->4->5->null
+'''
+def middle_node(head: ListNode) -> ListNode:
+    # write your code here.
+    re = now = head
+    num1 = num2 = 0
+    if head.next is None:
+        return head
+    while now.next:
+        if num1 // 2 <= num2:
+            now, num1 = now.next, num1 + 1
+            continue
+        num2 +=1; num1 += 1
+        re, now = re.next, now.next
+    return re.next
+#time: 81ms, store: 5.82mb rank: 98.0%
+#快慢指针问题
+def middle_node(self, head: ListNode) -> ListNode:
+    # write your code here.
+    fastPointer = head
+    slowPointer = head
+    while fastPointer and fastPointer.next:
+        fastPointer = fastPointer.next.next
+        slowPointer = slowPointer.next
+    return slowPointer
+#大佬的这种写法就比较清晰了。。。
