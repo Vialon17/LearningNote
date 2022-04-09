@@ -597,3 +597,16 @@ def middle_node(self, head: ListNode) -> ListNode:
         slowPointer = slowPointer.next
     return slowPointer
 #大佬的这种写法就比较清晰了。。。
+
+# 给定一个字符串str，返回字符串中字母顺序最大的而且同时在字符串中出现大写和小写的字母。
+# 如果不存在这样的字母，返回‘~‘
+'''
+    输入:"aAbBcD"
+    输出:'B'
+'''
+def find_letter(str_: str) -> str:
+    # Write your code here.
+    return max(temp) if (temp := [x for x in str_.upper() if chr(ord(x)+32) in str_ and x in str_]) != [] else '~'
+# python, 喵哉！
+# 更加简练的思路是每一小步骤内比较大小并进行保留，
+# 相对来说时间复杂度会更加精妙。
