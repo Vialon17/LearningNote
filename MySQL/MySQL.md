@@ -90,7 +90,9 @@ There have four basic parts in this chapter: Add, delete, set, select and it's e
   In daily work, it's normal to combine different queries together.
   
   The child quiry will become a part of the father query, it usually plays the role as _result, conditional statement, the combined table._  
+
   For example:
+  
   ```sql
   select *, (select s_name from students) stu_name from students left join (select s_id, s_name, c_id, c_name from sourc) sources on students.s_id = sources.s_id where sources.s_id in (select s_id from teachers);
   ```

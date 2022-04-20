@@ -1,4 +1,4 @@
-# LearningNote
+# Learning Note
 
 _The learning note about programming written by vialon17_
 
@@ -11,6 +11,7 @@ There I want to be an AI Engineer at first, but I decide to be a Algorithm Engin
 _The purpose of a plan should be to make the future better rather than do things inflexibly, I privately think._
 
 I prefer construing the Algorithm as an abstract access to resolve some similar problems or the solving problems logic. After consulting a blog of [Jack Cui](https://cuijiahua.com), I made my learning route:
+
 * __Mathematic__
     
     It's the basic part that u should learn some mathematic logic to understand the world, so just be a master in advanced mathematics, and [Linear Algebra](https://www.youtube.com/watch?v=QVKj3LADCnA&list=PL49CF3715CB9EF31D), [probability theory](https://www.youtube.com/watch?v=1uW3qMFA9Ho&list=PLUl4u3cNGP60hI9ATjSFgLZpbNJ7myAg6) are also necessary for deep learning and algorithm.

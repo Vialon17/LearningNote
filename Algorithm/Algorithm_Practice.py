@@ -610,3 +610,15 @@ def find_letter(str_: str) -> str:
 # python, 喵哉！
 # 更加简练的思路是每一小步骤内比较大小并进行保留，
 # 相对来说时间复杂度会更加精妙。
+
+# 统计字符串中出现大于2的组合次数（大于2时看做1/2两种情况）。
+# 输入： S = "bbaa"
+# 输出： 4 解释：答案为 "bbaa", "bba","baa","ba"
+# 输入： S = "helllllooo"
+# 输出： 4 解释： 答案为 "hello", "helo","heloo","helloo"
+def stretch_word(s: str) -> int:
+    # write your code here
+    from itertools import groupby
+    temp_list = [x for x in groupby(s) if len(list(x[1])) > 1]
+    return pow(2, len(temp_list))
+# itertools.groupby class 类似于SQL中的group by 分组条件。
