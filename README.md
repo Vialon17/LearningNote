@@ -1,6 +1,8 @@
 # Learning Note
 
-_The learning note about programming written by vialon17_
+_The learning note about programming written by Vialon17_
+
+_Now the version you are looking at is the latest, we'll change some opinion with something with the improvement of our konwledge._
 
 I will note my learning notes here in order to help someone else and create a cloud `Good Luck Charlie`[^1] record.
 
@@ -28,19 +30,22 @@ I prefer construing the Algorithm as an abstract access to resolve some similar 
 
     Then it's the time to get touch with the basic algorithm and master data structure with python or C++. In fact, I have learned some knowledge of them as I write this article, so maybe this section is the easist part in my algorithm leaning road. There u should finish these books: [Grokking Algorithms](https://github.com/bat67/awesome-algorithm-books/blob/master/classic%20algorithms/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3%20-%202017.pdf), [剑指Offer - Python Edition](https://github.com/JushuangQiao/Python-Offer), [Algorithm 4Edi](https://github.com/hongye612430/awesome-programming-books-1/blob/master/algorithms/%E7%AE%97%E6%B3%95%EF%BC%88%E7%AC%AC4%E7%89%88%EF%BC%89.pdf).
 
-    _May it be a parter with the C++/Python learning in a year, but I would finish the basic with a month I think._
-
-    _-- Update 2022, March, 26_
-
     I had finished the basic part several days ago and also did some algorithm practice on [LintCode](https://www.lintcode.com), but it's obvious that more exercises and competitions are necessary for my study.
 
     So it's time to get through the tough day and the [Algorithms 4th Edition](https://hk1lib.org/book/2738376/3dc280)! making deep comprehension with Data Structure seems also important.
 
+    _It seems a long way if I wanna be an algorithm master, so I'll do some algorithm practice everyday to enhance the comprehension with algorithm logic._
+
 * __Machine/Deep learning__
   
-    The core part.
-    
-    I know little about it in faith, but it seems that once u understand its running logic and master several deep learning frames, u could be regarded as a good algorithm engineer. 
+    The core part, no matter for the algorithm engineer or AI engineer.
+
+    [Machine learning](https://en.wikipedia.org/wiki/Machine_learning) is mainly about some learning computer algorithm those can predict and process new data after having been trainned with some data. It's the combination of Computer Science, Statistics and Data Science, and divide with the used software algorithm, ML perfrom pretty good when processing fuzzy data.
+
+    In recent years, with the flash of deep learning, which is an important branch of Mearning learning, ML comes back to prople's view once again after it had been forgotten for about 30 years.
+
+    Now I'm learning ML on [Kaggle](https://www.kaggle.com/), known as the biggest data model and machine learning online platform in the world. 
+    ~~It's wonderful and I like it so much!~~
 
 
 ## [Algorithm and Data Structure](./Algorithm/Algorithm.md)

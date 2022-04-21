@@ -11,6 +11,9 @@ _-- by Vialon17_
     
     I make algorithm practice on [LintCode](https://www.lintcode.com), and this file is the exercises code. 
     I put the execution time complexity data after problem sets, and if I have troulbe with some sets, I'll compare my code with others and put theirs after mine.
+
 2. [Algorithm Knowledge](./Algorithm.md)
 
-    This file is mainly about the Algorithm and Data structure note.
+    This file is mainly about the basic Algorithm.
+
+3. [Data Structure](./Data_Structure.md)
