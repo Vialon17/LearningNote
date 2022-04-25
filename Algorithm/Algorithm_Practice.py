@@ -622,3 +622,26 @@ def stretch_word(s: str) -> int:
     temp_list = [x for x in groupby(s) if len(list(x[1])) > 1]
     return pow(2, len(temp_list))
 # itertools.groupby class 类似于SQL中的group by 分组条件。
+
+#求给定范围内最大索引对问题
+'''
+输入: 
+    A = [1, 4, 6, 8], B = [1, 2, 3, 5], K = 12
+输出:
+    [2, 3]
+'''
+#https://www.lintcode.com/problem/1797/solution/56682
+def optimal_utilization(a: list, b: list, k: int) -> tuple:
+        # write your code here
+        list1, list2 = [x for x in a if x <= k], [y for y in b if y <= k]
+        if list1 == [] or list2 == []: return []
+        re_index, num = (0, 0), 0
+        for i in range(len(list1)):
+            for j in range(len(list2) - 1, -1, -1):
+                if list1[i] + list2[j] <= k and list1[i] + list2[j] > num:
+                    re_index, num = (i, j), list1[i] + list2[j]
+        x, y = re_index
+        if y != 0 and list2[y] == list2[y-1]:
+            while y != 0 and list2[y] == list2[y-1]: y -= 1
+            re_index = (x, y)
+        return re_index

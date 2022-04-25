@@ -64,9 +64,9 @@ There the SQL is the basic for data analysis so there could havn't any reasons f
 
 Let's make it. 😀
 
-## Python
+## [Python](./Python/ReadMe.md)
 
-I have learned Python by myself intermittently in last year, but it's necessary for me to improve the comprehension with Python. Once having a try, u'll found the [Fluent Python](https://au1lib.org/book/17194890/bf297b) is a twinking star that can light up ur way to ~~brickyard~~ 🤣.There I put my note of The Fluent Python [here](./Python/fluent_python.md), and i'm studying it now.
+I have learned Python by myself intermittently in last year, but it's necessary for me to improve the comprehension with Python. Once having a try, u'll found the [Fluent Python](https://au1lib.org/book/17194890/bf297b) is a twinking star that can light up ur way to ~~brickyard~~ 🤣🤣🤣.
 
 But if u don't have any programming experience, u'd better make youself familiar with the basic Python syntax and basic computer science knowledge though Python seems like the easiest programming language to learn. The [Runood](https://www.runoob.com/python3/python3-tutorial.html) and [W3Schools](https://www.w3schools.com/python/default.asp) maybe good choices for beginner, and [Offical Docs](https://docs.python.org/zh-cn/3.9/) will offer the long-term support for ur study.
 
