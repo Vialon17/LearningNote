@@ -645,3 +645,28 @@ def optimal_utilization(a: list, b: list, k: int) -> tuple:
             while y != 0 and list2[y] == list2[y-1]: y -= 1
             re_index = (x, y)
         return re_index
+
+#https://www.lintcode.com/problem/44/description
+#求目标列表的子列表的最小之和
+'''
+    Input -> [1,-1,-2,1]
+    Output -> -3, [-1, -2]
+    Input -> [1,-1,-2,1,-4]
+    Output -> -6, [-1, -2, 1, -4]
+'''
+def min_sub_array(nums: list[int]) -> int:
+    # write your code he
+    if not nums or len(nums) == 0:
+        return 0
+    max_sum, min_sum = 0, float('inf')
+    total = 0
+    for i in range(len(nums)):
+        total += nums[i]
+        min_sum = min(min_sum, total - max_sum)
+        max_sum = max(max_sum, total)
+    return min_sum
+#纠结了好久，但暴力不可取；
+# max_sum -> i之前最大的子列表之和
+# total -> 0到i的总和
+# min_sum -> 目标
+ 
