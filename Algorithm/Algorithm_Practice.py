@@ -1,6 +1,7 @@
 from logging import exception
 from operator import index
 from time import time
+from functools import lru_cache
 #请在 solution.py 里完善代码，实现以下函数功能：
 
     #get_len：返回输入列表的长度
@@ -670,3 +671,23 @@ def min_sub_array(nums: list[int]) -> int:
 # total -> 0到i的总和
 # min_sum -> 目标
  
+# 没事干的华哥又想吃鸭头了。
+# 已知华哥有 `budget` 毛钱；每个鸭头要`cost` 毛钱；
+# 老板看华哥吃的贼香，于是想出来个促销方法赚华哥小钱钱：
+#       每买一个鸭头给1个积分，每`exchange`个积分能换一个鸭头；
+# 问总共有多少小鸭鸭要倒霉。
+'''
+for example:
+    budget -> 6, cost -> 2, exchange -> 2,
+    the rusult -> 5.
+'''
+def buy_beverage(budget: int, cost: int, exchange: int) -> int:
+# write your code here
+    init_num = budget // cost
+    @lru_cache
+    def recur(num: int) -> int:
+        if num < exchange:
+            return 0
+        return num // exchange + recur(num % exchange + num // exchange)
+    return recur(init_num) + init_num
+# 结果：华哥吃了太多鸭头，生病住院了2333。。。
