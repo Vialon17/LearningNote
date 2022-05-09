@@ -691,3 +691,51 @@ def buy_beverage(budget: int, cost: int, exchange: int) -> int:
         return num // exchange + recur(num % exchange + num // exchange)
     return recur(init_num) + init_num
 # 结果：华哥吃了太多鸭头，生病住院了2333。。。
+
+# https://www.lintcode.com/problem/615/
+# 做了一天，吐了。。
+# 深度搜索，
+def can_finish(num_courses: int, prerequisites: list) -> bool:
+        # write your code here
+    from collections import defaultdict
+    import copy
+    temp_dict = defaultdict(set)
+    for i in prerequisites:
+        temp_dict[i[0]].add(i[1])
+    def recur(left_set:set, num:int):
+        #print(num, left_set,temp_dict[num])
+        if left_set & temp_dict[num] != set():
+            return False
+        temp = True
+        for i in temp_dict[num]:
+            temp_left_set = copy.copy(left_set)
+            temp_left_set.add(num)
+            temp = temp and recur(temp_left_set, i) if temp_dict[num] != set() else True
+        return temp
+    re = True
+    temp_dict2 = dict(temp_dict)
+    for i in temp_dict2.keys():
+        re = re and recur(set([i]), i)
+    return re
+# 正解 -> 拓扑排序
+def canFinish(numCourses, prerequisites):
+    # Write your code here
+    from collections import deque
+    edges = {i: [] for i in range(numCourses)}
+    degrees = [0 for i in range(numCourses)] 
+    for i, j in prerequisites:
+        edges[j].append(i)
+        degrees[i] += 1
+    queue, count = deque([]), 0
+    for i in range(numCourses):
+        if degrees[i] == 0:
+            queue.append(i)
+    while queue:
+        node = queue.popleft()
+        count += 1
+
+        for x in edges[node]:
+            degrees[x] -= 1
+            if degrees[x] == 0:
+                queue.append(x)
+    return count == numCourses
