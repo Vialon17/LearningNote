@@ -150,6 +150,7 @@ Let's import some tables:
 | 04 | Wesker | 1960-08-06 | man |
 | 05 | Ada | 1974-03-02 | woman |
 | 06 | Criss | 1973-01-20 | man |
+
 _(the main characters' data from [Resident Evil](https://game.capcom.com/residentevil/en/), but there lose the birthday data so I draw up them.)_
 
 **Stories**
