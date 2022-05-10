@@ -76,13 +76,22 @@ There have four basic parts in this chapter: Add, delete, set, select and it's e
   Query is the basic part in daily data analysis work, it can help u filter data, integrate data and analyse the necessary data.
 
   __Basic syntax:__
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`select <col.name> from <table.name> (left join <table.name> on <requirement>) where <requirement1> group by <col.name> having <requirement2> order by <col.name> limit <number, page>;`
 
-  It seems a little complex, but u can divide into three groups by the program execution order:
+  ```sql
+      select <col.name> from <table.name> # (left join <table.name> on <requirement>) 
+      where <requirement1> group by <col.name> 
+      having <requirement2> 
+      order by <col.name> limit <number, page>;
+  ```
+
+  It seems a little complex, but u can divide this command into three groups by the program execution order:
   
   1. Data Source -> `from <table.name> (left/right join <table.name> on <requirement>);`, this SQL command means it'll select data from table1 and table2 and present their **Cartesian Product**  and filter the result by the conditional statement(*requirement*).
+  
   2. Conditional Statement -> `where <condition1> group by <col.name> having <condition2>;`, this command mainly determines the result. 
+   
       > The execution order is 'where' -> 'group by' -> 'having', u should use the aggregate function like 'max(), min(), sum()',
+
   3. Result Filter -> `select <col.name> ... order by <col.name> limit <num, page>;`, this command determines the result we'll select from the association list, and how to show the result: order and page setting.
   
   __Extension:__
@@ -94,8 +103,12 @@ There have four basic parts in this chapter: Add, delete, set, select and it's e
   For example:
   
   ```sql
-  select *, (select s_name from students) stu_name from students left join (select s_id, s_name, c_id, c_name from sourc) sources on students.s_id = sources.s_id where sources.s_id in (select s_id from teachers);
+     select *, (select s_name from students) stu_name from students 
+     left join (select s_id, s_name, c_id, c_name from sourc) sources 
+     on students.s_id = sources.s_id 
+     where sources.s_id in (select s_id from teachers);
   ```
+  _About the `join`, please read the [combination](#combination) part._
   _This part is an important baisc part of SQl._
   
 #### __Update and Delete__
@@ -104,8 +117,8 @@ There have four basic parts in this chapter: Add, delete, set, select and it's e
 
   __Basic Syntax__
 
-  * Update: `update <table_name> set <col.name1> = <value1>, <col.name2> = <value2> where <conditional statement>;`
-  * Delete Data: `delete from <table_name> where  <conditional statement>;`  
+  * Update: `update <table_name> set <col.name1> = <value1>, <col.name2> = <value2> where <conditional_statement>;`
+  * Delete Data: `delete from <table_name> where  <conditional_statement>;`  
     Delete Database: `drop database <database_name>;`
     Delect Table: `drop table <table_name>;`
 
@@ -118,4 +131,70 @@ There have four basic parts in this chapter: Add, delete, set, select and it's e
   **`Delect` command is a DML program statement, which means roll back operation is callable while `drop` and `truncate` are DLL statement without roll-back.**
 
 
+### Combination
+
+It's inevitable for us to extract data from different tables in a relational database when analysing data in dialy work, so there comes the combination syntax.
+
+The combination rule relies on [Cartesian product](https://en.wikipedia.org/wiki/Cartesian_product), the command will return a Cartesian table based on target tables. And the left we need do is filtering out the impurites.
+
+Let's import some tables:
+
+`select * from Character; select * from Stories;`
+
+**Character:**
+| s_id | s_name | s_birth | s_gender |
+| :---: | :---: | :---: | :---: |
+| 01 | Leon | 1977-12-21 | man |
+| 02 | Jack | 1992-05-20 | man |
+| 03 | Sherry | 1986-07-01 | woman |
+| 04 | Wesker | 1960-08-06 | man |
+| 05 | Ada | 1974-03-02 | woman |
+| 06 | Criss | 1973-01-20 | man |
+_(the main characters' data from [Resident Evil](https://game.capcom.com/residentevil/en/), but there lose the birthday data so I draw up them.)_
+
+**Stories**
+| story_name | main_character | publish_time | good_review_rates |
+| :---: | :---: | :---: | :---: |
+| Resident Evil 4 | Leon | 28 Feb, 2014 | 91% |
+| Resident Evi 6 | Jack | 22 Mar, 2013 | 80% |
+| Resident Evil VII | Eason | 24 Jan, 2017 | 94% |
+| Resident Evil Village | Criss | 7 May, 2021 | 95% |
+
+##### Inner Join and Outer Join
+
+**Syntax:**
+
+* __inner join__: `select <col.name> from <table_name> join <table_name> on <conditional_statement>`
+* __outer join__: `select <col.name> from <table_name> full join <table_name> on <conditional_statement>`
+
+**Outer Join**, as known as `Full Join`, returns all records when there is a match in any one of the target tables, it'll fill the inexistent element with `Null`, in additional;
+
+`select * from Character full join Stories on Character.s_name = Stories.main_character;`
+| s_id | s_name | s_birth | s_gender | story_name | main_character | publish_time | good_review_rates |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| 01 | Leon | 1977-12-21 | man | Resident Evil 4 | Leon | 28 Feb, 2014 | 91% |
+| 02 | Jack | 1992-05-20 | man | Resident Evi 6 | Jack | 22 Mar, 2013 | 80% |
+| 03 | Sherry | 1986-07-01 | woman |_Null_ | _Null_ | _Null_ | _Null_ |
+| ... | ... | ... | ... | ... | ... | ... | ... |
+|_Null_ | _Null_ | _Null_ | _Null_ | Resident Evil VII | Eason | 24 Jan, 2017 | 94% |
+
+_(I just list the table's head part here, but please pay attention to the **Null**.)_
+
+**Inner Join**, the default join type, will return the records when all target tables match the rules;
+
+`select * from Character join Stories on Character.s_name = Stories.main_character;`
+| s_id | s_name | s_birth | s_gender | story_name | main_character | publish_time | good_review_rates |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| 01 | Leon | 1977-12-21 | man | Resident Evil 4 | Leon | 28 Feb, 2014 | 91% |
+| 02 | Jack | 1992-05-20 | man | Resident Evi 6 | Jack | 22 Mar, 2013 | 80% |
+| 06 | Criss | 1973-01-20 | man | Resident Evil Village | Criss | 7 May, 2021 | 95% |
+
+
+In fact, we can image the tables as gathers in math.
+| | |
+|:--:|:--:|
+|![](https://www.runoob.com/wp-content/uploads/2013/09/img_innerjoin.gif)|![](https://www.runoob.com/wp-content/uploads/2013/09/img_fulljoin.gif)
+
+
+-----
 [^1]: u should import the practice SQL data into ur database, here we have three database to practice and it's easy to find some practice questions in mang websites.
