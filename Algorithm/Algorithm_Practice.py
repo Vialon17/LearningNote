@@ -739,3 +739,20 @@ def canFinish(numCourses, prerequisites):
             if degrees[x] == 0:
                 queue.append(x)
     return count == numCourses
+
+# https://www.lintcode.com/problem/287/solution/59133
+# 区间贪心算法
+# 可进行优化
+def get_minium_vision_ward(pos: list[list[int]], l: int) -> int:
+    # write your code here
+    pos_sorted = sorted(pos, key = lambda x: x[0]*10 - x[1]*0.01)
+    if pos_sorted[0][0] != 0: return -1
+    pos_selected = [pos_sorted[0], pos_sorted[0]]
+    for i in pos_sorted:
+        if pos_selected[-1][1] >= l: break
+        elif i[0] <= pos_selected[-2][1] and i[1] > pos_selected[-1][1]:
+            pos_selected[-1] = i
+        elif i[0] > pos_selected[-1][0] and i[1] > pos_selected[-1][1] and i[0] <= pos_selected[-1][1]:
+            pos_selected.append(i)
+        elif i[0] > pos_selected[-1][1]: return -1
+    return lens if (lens := len(pos_selected)) <= len(pos) else -1

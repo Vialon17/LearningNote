@@ -6,7 +6,7 @@
 
 ## About MySQL
 
-There usually have two type of databases: `SQL(Sequel)` and `noSQL` in computer system, here has a table showing the difference:
+There usually have two type of databases: `SQL(Sequel)` and `NoSQL` in computer system, here has a table showing the difference:
   | **Relational Databases(SQL)** | **Non-Relational Databases(No-SQL)** |
   |:----:|:---:|
   | Organize data into one or more tables | Organize data is anythong but a traditional table |
@@ -88,7 +88,7 @@ There have four basic parts in this chapter: Add, delete, set, select and it's e
   
   1. Data Source -> `from <table.name> (left/right join <table.name> on <requirement>);`, this SQL command means it'll select data from table1 and table2 and present their **Cartesian Product**  and filter the result by the conditional statement(*requirement*).
   
-  2. Conditional Statement -> `where <condition1> group by <col.name> having <condition2>;`, this command mainly determines the result. 
+  2. Conditional Statement -> `where <condition1> group by <col.name> having <condition2>;`, as the main filterable factor, it prefers putting its power on the output.
    
       > The execution order is 'where' -> 'group by' -> 'having', u should use the aggregate function like 'max(), min(), sum()',
 
@@ -117,14 +117,14 @@ There have four basic parts in this chapter: Add, delete, set, select and it's e
 
   __Basic Syntax__
 
-  * Update: `update <table_name> set <col.name1> = <value1>, <col.name2> = <value2> where <conditional_statement>;`
-  * Delete Data: `delete from <table_name> where  <conditional_statement>;`  
-    Delete Database: `drop database <database_name>;`
-    Delect Table: `drop table <table_name>;`
+  * Update: `update <table.name> set <col.name1> = <value1>, <col.name2> = <value2> where <conditional.statement>;`
+  * Delete Data: `delete from <table.name> where  <conditional.statement>;`  
+    Delete Database: `drop database <database.name>;`
+    Delect Table: `drop table <table.name>;`
 
   __Difference between `drop`, `delect` and `truncate`:__
 
-  `Delete` command just do the special data deletion from table, but when the condition is set refer to the whole table, it seems like the `truncate table <table_name>` statement.
+  `Delete` command just do the special data deletion from table, but when the condition is set refer to the whole table, it seems like the `truncate table <table.name>` statement.
 
   It shows that Delete and Truncate won't delete table itself but this table's content, with the Drop command will delete the table wholly from database.
 
@@ -165,8 +165,10 @@ _(the main characters' data from [Resident Evil](https://game.capcom.com/residen
 
 **Syntax:**
 
-* __inner join__: `select <col.name> from <table_name> join <table_name> on <conditional_statement>`
-* __outer join__: `select <col.name> from <table_name> full join <table_name> on <conditional_statement>`
+* __inner join__: `select <col.name> from <table.name> join <table.name> on <conditional.statement>`
+* __outer join__: `select <col.name> from <table.name> full join <table.name> on <conditional.statement>`
+
+_If the condition is unnecessary, why not ignore it?_
 
 **Outer Join**, as known as `Full Join`, returns all records when there is a match in any one of the target tables, it'll fill the inexistent element with `Null`, in additional;
 
@@ -195,6 +197,14 @@ In fact, we can image the tables as gathers in math.
 | | |
 |:--:|:--:|
 |![](https://www.runoob.com/wp-content/uploads/2013/09/img_innerjoin.gif)|![](https://www.runoob.com/wp-content/uploads/2013/09/img_fulljoin.gif)
+
+
+#### Left Join and Right Join
+
+**The Syntax:**
+
+* __Left Join:__ `select <col.name> from <table1.name> left join <table2.name> on <condition.statement>;`
+* __Right Join:__`select <col.name> from <table1.name> right join <table2.name> on <condition.statement>;`
 
 
 -----
