@@ -118,6 +118,9 @@ There have four basic parts in this chapter: Add, delete, set, select and it's e
   __Basic Syntax__
 
   * Update: `update <table.name> set <col.name1> = <value1>, <col.name2> = <value2> where <conditional.statement>;`
+  
+  * Alter: `alter table <table.name> <command>;` 
+  
   * Delete Data: `delete from <table.name> where  <conditional.statement>;`  
     Delete Database: `drop database <database.name>;`
     Delect Table: `drop table <table.name>;`
@@ -129,6 +132,21 @@ There have four basic parts in this chapter: Add, delete, set, select and it's e
   It shows that Delete and Truncate won't delete table itself but this table's content, with the Drop command will delete the table wholly from database.
 
   **`Delect` command is a DML program statement, which means roll back operation is callable while `drop` and `truncate` are DLL statement without roll-back.**
+
+  The difference between **ALTER** and **UPDATE**:
+
+  * `Alter`: use to update the structure of the table in the database(like add, delete, modify the attributes of the tables in the database).
+  
+    > `alter table teacher drop column teacher_id;` -> this command will delete the column named 'tercher_id'.
+    
+    > `alter table teacher add teacher_gender char(10);` -> this'll add a char column named 'tercher_gender'.
+
+    > `alter table teacher rename to T;` -> rename the table.
+
+    > `alter table teacher alter column teacher_id varchar(20);` -> change the column's type into varchar.
+  
+  * `Update`: use to manipulate the data of any existing column. But can’t be change the table’s definition.
+
 
 
 ### Combination
@@ -151,7 +169,7 @@ Let's import some tables:
 | 05 | Ada | 1974-03-02 | woman |
 | 06 | Criss | 1973-01-20 | man |
 
-_(the main characters' data from [Resident Evil](https://game.capcom.com/residentevil/en/), but there lose the birthday data so I draw up them.)_
+_(the main characters' data from [Resident Evil](https://game.capcom.com/residentevil/en/), but there have lost the birthday data so I concoted them.)_
 
 **Stories**
 | story_name | main_character | publish_time | good_review_rates |
@@ -206,6 +224,34 @@ In fact, we can image the tables as gathers in math.
 * __Left Join:__ `select <col.name> from <table1.name> left join <table2.name> on <condition.statement>;`
 * __Right Join:__`select <col.name> from <table1.name> right join <table2.name> on <condition.statement>;`
 
+**The Collection Form**
+
+| | |
+|:--:|:--:|
+|![](https://www.runoob.com/wp-content/uploads/2014/03/img_leftjoin.gif)|![](https://www.runoob.com/wp-content/uploads/2014/03/img_rightjoin.gif)
+
+This two syntax will ofter great help with our query work through combinated with different conditional statements. Let's try some examples:
+
+_we wanna know the main characters' private information and the main stories they participate in, there we should try the next SQL code._
+
+`select Character.*, Story.story_name as story from Character left join Story on Character.s_name = Story.main_character;`
+
+The result:
+
+| s_id | s_name | s_birth | s_gender | story |
+| :---: | :---: | :---: | :---: | :---: |
+| 01 | Leon | 1977-12-21 | man | Resident Evil 4 |
+| 02 | Jack | 1992-05-20 | man | Resident Evi 6 |
+| 03 | Sherry | 1986-07-01 | woman | _Null_ |
+| 04 | Wesker | 1960-08-06 | man | _Null_ |
+| 05 | Ada | 1974-03-02 | woman | _Null_ |
+| 06 | Criss | 1973-01-20 | man | Resident Evil Village |
+
+
+
+
+
+
 
 -----
-[^1]: u should import the practice SQL data into ur database, here we have three database to practice and it's easy to find some practice questions in mang websites.
+[^1]: u should import the practice SQL data into ur database, here we have three database to practice and it's easy to find some practice questions in many websites.
