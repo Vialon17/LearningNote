@@ -247,6 +247,36 @@ The result:
 | 05 | Ada | 1974-03-02 | woman | _Null_ |
 | 06 | Criss | 1973-01-20 | man | Resident Evil Village |
 
+### Transaction
+
+Similar with the function in other program languages, SQL will execute the packaged codes in a transaction and return its result.
+
+__The Syntax:__
+
+* `start` -> The signal keyword meaning the begin of a transaction;
+
+* `commit` -> commit the change to DB repositories;
+
+* `savepoint <savepoint_name>` -> create a tomporary checkpoint in a transaction; 
+
+* `rollback [to <savepoint_name>]` -> rollback the changes to the beginning or a specified savepoint;
+
+For example:
+
+```sql
+  start:
+    create temporary table temp (
+      select * from teacher 
+      where teacher_id in (01, 03, 07, 11)
+    );
+    -- here i create a temporary table;
+    update temp set teacher_name = 'Bob Lee' where teacher_id = 01;
+    update temp set teacher_name = 'Alice' where teacher_id = 03;
+  commit;
+```
+
+
+
 
 
 
