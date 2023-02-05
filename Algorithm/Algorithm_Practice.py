@@ -756,3 +756,22 @@ def get_minium_vision_ward(pos: list[list[int]], l: int) -> int:
             pos_selected.append(i)
         elif i[0] > pos_selected[-1][1]: return -1
     return lens if (lens := len(pos_selected)) <= len(pos) else -1
+
+# https://www.lintcode.com/problem/1227/description
+# 没得说，
+def repeated_substring_pattern(s: str) -> bool:
+    # write your code here
+    return s in (s * 2)[1:-1]
+
+# https://www.lintcode.com/problem/282/description
+# 堆栈问题
+def decompress_string(message: str) -> str:
+    while '[' in message:
+        lidx = message.rindex('[', 0, message.index(']'))
+        ridx = message.index(']') + 1
+        sub_data = message[lidx:ridx]
+        cnt, sub_str = sub_data[1:-1].split('|')
+        sub_msg = sub_str * int(cnt)
+        message = message.replace(sub_data, sub_msg)
+    return message
+
