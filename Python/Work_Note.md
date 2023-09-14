@@ -30,3 +30,26 @@ But it just a demonstration and in fact, it will cause a bug because QT will res
 
 Here is the error code:
 `QWindowsWindow::setGeometry: Unable to set geometry 1920x1200+0+23 (frame: 1936x1239-8-8) on QWidgetWindow/"QMainWindowClassWindow" on "HP V22 (1)". Resulting geometry: 1920x1061+0+23 (frame: 1936x1100-8-8) margins: 8, 31, 8, 8)`
+
+
+### Flask Initialization
+
+Flask deleted the decorator `before_first_request` in its 2.3.3 version, so here uses the `before_request` and set `flask.config` dictorary variable to simulate the former.
+
+```python
+app = Flask(__name__)
+coms_cursor = None
+
+@app.before_request
+def before_first_request():
+    global coms_cursor
+    if not app.config['APP_ALREADY_STARTED']:
+        coms_cursor = Coms("config.json")
+        app.config['APP_ALREADY_STARTED'] = True
+
+if __name__ == "__main__":
+    app.config['APP_ALREADY_STARTED'] = False
+    app.run(host = "localhost", port = 8080, debug = True)
+```
+
+It'll run the `before_first_request` function code and adjust the configuration
