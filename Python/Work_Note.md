@@ -53,3 +53,40 @@ if __name__ == "__main__":
 ```
 
 It'll run the `before_first_request` function code and adjust the configuration
+
+### Flask CORS(Cross-Origin Resource Sharing)
+
+When the request server posts a request to a server under different protocols, domains and ports, there comes the CORS -- the server or the browser defaultly refuse the cross-origin request to protect it self, but for this program, we need the web get the serial infomation and transport info between different server, so it's necessary to cancel the restrict for the request server.
+
+Command --> `pip isntall Flask-cors`
+
+__Method_1:__ use decorator `cross_origin` to assign specific route function to deal with cors error.
+
+```python
+from flask import Flask
+from flask_cors import CORS, cross_origin
+app = Flask(__name__)
+@app.route("/")
+@cross_origin(origins = "request_server_ip", methods = ['get', 'post'])
+def parse_function():
+    print("123")
+if __name__ == "__main__":
+    app.run("0.0.0.0", port = 8080, debug = True)
+```
+
+__Method_2:__ use class `CROS` instance and pass the flask instance to it.
+
+```python
+from flask import Flask
+from flask_cors import CORS
+app = Flask(__name__)
+
+@app.route("/")
+def parse_function():
+    print("123")
+if __name__ == "__main__":
+    CORS(app)
+    app.run("0.0.0.0", port = 8080, debug = True)
+```
+
+But I don't like the second way because of its security policy, it seems like accept all requests from any domains...
