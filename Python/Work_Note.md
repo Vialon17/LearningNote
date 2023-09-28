@@ -204,3 +204,79 @@ Pay attention to the 30th row:
 So there comes the reason: the ternary operator never take care of the `,` punctation, it just work for the sentence before itself.
 
 We need rewrite the return code:`return (string_type, string_float) if "string_float" in vars() else string_type`.
+
+-------
+
+# PySerial Communication
+
+Different from post order and get info from the lower, data receiving frequency is important for the lower that will post data to the upper automatically.
+
+```python
+a = [5,0,53,6] + list(check_crc([5,0,53,6]))
+coms_cursor = Coms("config.json")
+count = 0
+while count <= 10000:
+    temp_info = coms_cursor.alarm.read_all()
+    print(temp_info, count)
+    count += 1
+    sleep(0.5) # the read frequency
+coms_cursor.alarm.close()
+```
+
+Reading data once per second `sleep(1)` will lead to the lower computer overheat and the posting data unstably, but when set the reading frequency twice per second, it won't result in this.
+
+I personally think this mainly caused by the lower `cache monery leaks`: If receiving data with slow frequency, the lower computer CPU will need to wipe superfluous data and re-write data to the cache memory, compared with writing data to the cache(the previous data has been transmitted to the upper), the slow frequency will do more CPU calculation.
+
+In fact, other applications that communicate with the serial lower computer always set the default read frequency one thousand times per second.
+
+-------
+
+### QT Customized Signal and Slot(PySide6)
+
+It's necessary to create customized signal and slot in QT system to face different user requirements.
+```python
+from PySide6.QtCore import Slot, QThread, Signal
+
+class App(QApplication):
+
+    # Signal part
+    _warn = Signal(str, bool)
+    _clipboard = Signal(str)
+
+    def __init__(self, *other, **others):
+        self._warn.connect(self._warn_box)
+        self._clipboard.connect(self._copy_clipboard)
+        ...
+
+    def run_end(self):
+        self._warn.emit("ByeBye!", True)
+
+    def run_copy(self, data: str):
+        self._clipboard.emit("https://github.com/Vialon17/LearningNote/edit/main/Python/Work_Note.md")
+
+    @Slot()
+    def _warn_box(self, message；str, end: bool = False):
+        message_box = QMessageBox()
+        message_box.setFixedSize(300, 200)
+        message_box.setWindowTitle("Warning!")
+        message_box.setText(message)
+        if end:
+            sys.exit(0)
+
+    @Slot()
+    def _copy_clipboard(self, info: str):
+        import pyperclip
+        pyperclip.copy(text)
+```
+
+This example creates an application and defines two signal `warn` and `clipboard`, two slot function `_warn_box` and `_copy_clipboard`, in its initiation function, we connect the signals and slots together.
+
+* Signal variable will create rule about its emit type.
+
+    the _warn signal can just emit two parameter -- string and bool
+
+__Attention__: 
+
+The signal variables must be defined in QT system class environment and shouldn't be putted in `__init__` function. the QTCore.Signal class just creates a signal instance just when it has checked out itself in QT system class.
+
+And the Signal & Slot mechanism can be used in different threads, which means u can submit an info to a signal variable and call its slot functions.
