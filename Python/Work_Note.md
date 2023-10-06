@@ -1,4 +1,9 @@
-### Monkey Patch
+# Working Note
+
+The Notes taken at work
+
+-----
+## Monkey Patch
 
 __Create monkey with parameters:__
 
@@ -33,7 +38,7 @@ Here is the error code:
 
 --------
 
-### Flask Initialization
+## Flask Initialization
 
 Flask deleted the decorator `before_first_request` in its 2.3.3 version, so here uses the `before_request` and set `flask.config` dictorary variable to simulate the former.
 
@@ -57,7 +62,7 @@ It'll run the `before_first_request` function code and adjust the configuration.
 
 -------
 
-### Flask CORS(Cross-Origin Resource Sharing)
+## Flask CORS(Cross-Origin Resource Sharing)
 
 When the request server posts a request to a server under different protocols, domains and ports, there comes the CORS -- the server or the browser defaultly refuse the cross-origin request to protect it self, but for this program, we need the web get the serial infomation and transport info between different server, so it's necessary to cancel the restrict for the request server.
 
@@ -96,7 +101,7 @@ But I don't like the second way because of its security policy, it seems like ac
 
 --------
 
-### Return Ternary Operator
+## Return Ternary Operator
 
 We have the functioin to extract the alphabetic and digital info:
 ```python
@@ -207,7 +212,7 @@ We need rewrite the return code:`return (string_type, string_float) if "string_f
 
 -------
 
-# PySerial Communication
+## PySerial Communication
 
 Different from post order and get info from the lower, data receiving frequency is important for the lower that will post data to the upper automatically.
 
@@ -231,7 +236,7 @@ In fact, other applications that communicate with the serial lower computer alwa
 
 -------
 
-### QT Customized Signal and Slot(PySide6)
+## QT Customized Signal and Slot(PySide6)
 
 It's necessary to create customized signal and slot in QT system to face different user requirements.
 ```python
