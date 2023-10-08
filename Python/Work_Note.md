@@ -78,6 +78,7 @@ app = Flask(__name__)
 @cross_origin(origins = "request_server_ip", methods = ['get', 'post'])
 def parse_function():
     print("123")
+
 if __name__ == "__main__":
     app.run("0.0.0.0", port = 8080, debug = True)
 ```
@@ -98,6 +99,28 @@ if __name__ == "__main__":
 ```
 
 But I don't like the second way because of its security policy, it seems like accept all requests from any domains...
+
+__Addition(Oct 8 2023):__
+
+In reality, solving the CORS error for Web-UI (front-end) access to the localhost server is the current objective, and the request from Web-UI should be normative. 
+
+The below shows the develop tool in browser request simulation(can use it simulate request from Web-UI)
+
+```javascript
+fetch('http://localhost:8080/test', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    // Add any additional headers if needed
+  },
+  // Add a body if it's a POST request with data
+  body: JSON.stringify({ order: 'order' }),
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Error:', error));
+
+```
 
 --------
 
