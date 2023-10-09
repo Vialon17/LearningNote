@@ -15,7 +15,7 @@ Let English be your coding language!
 
 ## \_\_init__
 
-__Original Word: Initiation__
+Original Word: Initiation.
 
 Brief Intro: \_\_init__() method usually used for _class_ instance initiation, it won't return variables and info.
 
@@ -29,6 +29,8 @@ Firstly, the Python interpreter will call the target class \_\_new__() method --
 
 * Return the new instance pointer object;
 
+_Addition: Through re-write the \_\_new\_\_ method, we can implement singleton pattern._
+
 ```python
 # the default __new__() method
 # the defaulter won't handle any parameter
@@ -38,10 +40,6 @@ class MyClass(Object):
     def __new__(cls, *args, **kwargs):
         return super().__new__(cls)
 
-```
-_Addition: Through re-write the \_\_new\_\_ method, we can implement singleton pattern._
-
-```python
 # the singleton pattern class
 # this class will only create one instance, and will return this instance whenever it's called
 class Single:
@@ -54,9 +52,7 @@ class Single:
 
 ```
 
-Then, after get the instance object memory pointer, the interpreter will call \_\_init__ method to initialize the instance. It takes the newly created instance (self) and additional arguments passed during instance creation.
-
-_In fact, we usually re-write this function to realize specific personal demand._
+Then, after get the instance object memory pointer, the interpreter will call \_\_init__ method to initialize the instance. It takes the newly created instance (self) and additional arguments passed during instance creation. _In fact, we usually re-write this function to realize specific personal demand._
 
 ```python
 # default __init__ function
@@ -82,7 +78,7 @@ print(cont.add())
 
 _Attention: we should initiate the supclass when we re-write the `__init__` method._
 
-After initiating the class instance, then the interpreter will re-write the instance's `__dict__` variable -- the static variable existed in every class.
+After initiating the class instance, then the interpreter will re-write the instance's `__dict__` variable -- the static variable existed in every class. 
 
 _The difference between the class `__dict__` and the instance `__dict__`: When create the instance, this variable will be re-write and overrided. The class `dict` means the variables declared in class space, which the instance `dict` variables declared in `__init__` method._
 
