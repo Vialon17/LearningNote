@@ -1,4 +1,4 @@
-# The Magic Method
+# The Magic Method & The Process
 
 _-- The Characteristic Methods Of Python, Syntax Sugers._
 
@@ -9,15 +9,25 @@ Let English be your coding language!
 ## The Catalog
 - [**The Magic Method**](#the-magic-method)
   - [**The Catalog**](#the-catalog)
-  - [**\_\_init__**](#\_\_init__)
-  - [**\_\_new__**](#\_\_init__)
+  - [**Create Class Instance**](#\_\_init__)
 
 
-## \_\_init__
 
-Original Word: Initiation.
+## Class Instance
 
-Brief Intro: \_\_init__() method usually used for _class_ instance initiation, it won't return variables and info.
+__Magic Method involved:__
+
+* __Initiation__ -- `__init__`
+
+    * Brief Intro: used for _class_ instance initiation, won't return variables and info;
+ 
+* __New (Instance)__ -- `__new__`
+
+    * Brief Intro: allocate memory space and create new specific _class_ instance;
+
+* __Dictionary__ -- `__dict__`
+
+    * Brief Intro: the object container -- include the object all parameters
 
 __The Process Of Python _Class_ Creates Instance:__
 
@@ -100,6 +110,25 @@ print(ins.__dict__)
 # {'__module__': '__main__', 'test_var': 'variable 1', '__init__': <function Myclass.__init__ at 0x000001D8BA3396C0>, '__dict__': <attribute '__dict__' of 'Myclass' objects>, ...}
 # {'_var': 'variable 2'}
 ```
+
+Finally, the interpreter return the object quote printer to the variable.
+
+-----
+## Instance Parameter Quote
+
+__Magic Method involved:__
+
+* __Dictionary__ -- `__init__`
+
+* __GetAttribute__ -- `__getattr__`
+
+    * Brief Intro: Special handling function before raising AttributeError;
+
+__The Process Of Instance Parameter Quote__
+
+*the process of accessing an attribute of an instance using the dot notation*
+
+At first, Python interpreter will try 
 
 -----
 
