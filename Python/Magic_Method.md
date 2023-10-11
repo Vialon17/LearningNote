@@ -9,8 +9,8 @@ Let English be your coding language!
 ## The Catalog
 - [**The Magic Method**](#the-magic-method)
   - [**The Catalog**](#the-catalog)
-  - [**Create Class Instance**](#\_\_init__)
-
+  - [**Create Class Instance**](#Class-Instance)
+  - [**Access Class Attribute**](#Instance-Parameter-Quote)
 
 
 ## Class Instance
