@@ -107,8 +107,9 @@ print(Myclass.__dict__)
 print(ins.__dict__) 
 
 # the result:
-# {'__module__': '__main__', 'test_var': 'variable 1', '__init__': <function Myclass.__init__ at 0x000001D8BA3396C0>, '__dict__': <attribute '__dict__' of 'Myclass' objects>, ...}
-# {'_var': 'variable 2'}
+>>>
+{'__module__': '__main__', 'test_var': 'variable 1', '__init__': <function Myclass.__init__ at 0x000001D8BA3396C0>, '__dict__': <attribute '__dict__' of 'Myclass' objects>, ...}
+{'_var': 'variable 2'}
 ```
 
 Finally, the interpreter return the object quote printer to the variable.
@@ -124,11 +125,89 @@ __Magic Method involved:__
 
     * Brief Intro: Special handling function before raising AttributeError;
 
-__The Process Of Instance Parameter Quote__
-
+__The Process Of Instance Parameter Quote.__
 *the process of accessing an attribute of an instance using the dot notation*
 
-At first, Python interpreter will try 
+Python interpreter will check the attribute by the following order:
+
+1. the instance `__dict__`
+2. the class `__dict__`
+3. the base class and supclass `__dict__`
+4. the `__getattr__` method
+5. raise `AttributeError`
+
+So when need add additional function to process accessing attribute, there we should implement the `__getattr__` method. Let's see how the python interpreter deal with the existed attribute and the not existed one.
+
+```python
+
+# the instance upper
+
+class Myclass:
+
+    test_var = 'variable 1'
+
+    def __init__(self):
+        self._var = 'variable 2'
+
+    def __getattr__(self, name):
+     	print('here we are in __getattr__.')
+     	return super().__getattr__(name)
+
+ins = Myclass()
+print(ins.__dict__)
+print(ins.test_var)
+print(ins.qe)
+
+# the result:
+>>>
+variable 1
+{'_var': 'variable 2'}
+here we are in __getattr__.
+Traceback (most recent call last):
+  File "F:\Python\temp.py", line 18, in <module>
+    print(ins.qe)
+  File "F:\Python\temp.py", line 13, in __getattr__
+    return super().__getattr__(name)
+AttributeError: 'super' object has no attribute '__getattr__'. Did you mean: '__setattr__'?
+
+```
+
+While the Object class does not possess the `__getattr__` method, it is worth noting that the `__getattr__` method is invoked after searching the `__dict__`.
+
+```python
+# Let me have a try
+# This class like pandas.DataFrame subclass
+# And accessing dataframe attribute will call dataframe corresponding attribute
+
+import pandas as pd
+
+class Try:
+
+    test_var = 'class variable'
+    
+    def __init__(self):
+        self._var = 'instancc variable'
+        self._pd = pd.DataFrame({
+            '1': [1, 2, 3],
+            '2': [1, 3, 5],
+            '3': [1, 4, 9]
+        })
+    
+    def __getattr__(self, name: str):
+        if hasattr(self._pd, name):
+            return self._pd.__getattr__(name)
+        raise AttributeError(f"Can't found the attribute {name}.")
+        
+ins = Try()
+print(ins.shape)
+
+# the result :)
+>>>
+(3, 3)
+
+```
+
+
 
 -----
 
