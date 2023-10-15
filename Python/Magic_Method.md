@@ -2,15 +2,13 @@
 
 _-- The Characteristic Methods Of Python, Syntax Sugers._
 
-----
-
-Let English be your coding language!
+Let English be your coding language! 😋
 
 ## The Catalog
-- [**The Magic Method**](#the-magic-method)
-  - [**The Catalog**](#the-catalog)
-  - [**Create Class Instance**](#Class-Instance)
-  - [**Access Class Attribute**](#Instance-Parameter-Quote)
+
+- [**The Catalog**](#the-catalog)
+- [**Create Class Instance**](#Class-Instance)
+- [**Access Class Attribute**](#Instance-Parameter-Quote)
 
 
 ## Class Instance
