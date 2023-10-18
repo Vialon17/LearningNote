@@ -316,3 +316,38 @@ __Attention__:
 The signal variables must be defined in QT system class environment and shouldn't be putted in `__init__` function. the QTCore.Signal class just creates a signal instance just when it has checked out itself in QT system class.
 
 And the Signal & Slot mechanism can be used in different threads, which means u can submit an info to a signal variable and call its slot functions.
+
+## The Configure File
+
+[Yaml](https://yaml.org/) and [JSON](https://json.org) are the most common configure file types usually used in coding, we load those variabes like this before:
+
+```python
+# the config file: 'config.yaml'
+import json, yaml
+
+def load_yaml(file_name: str) -> dict:
+    with open(file_name, 'r') as f:
+        return yaml.load(f, Loader = yaml.fullloader)
+
+def load_json(file_name: str) -> dict:
+    with open(file_name, 'r') as f:
+        return json.load(f)
+```
+
+This will return a dictionary object and we can find the element easily, but now this should be changed.
+
+```python
+from file import load_yaml, load_json
+
+class Config:
+
+    def __init__(self, file: str):
+        if 'yaml' in file:
+            self.config = load_yaml(file)
+        elif 'json' in file:
+            self.config = load_json(file)
+        for key, value in self.config.items():
+            setattr(Config, key, value)
+```
+
+Through creating a class object, we can directly use `class.attribute` to get the value now.
