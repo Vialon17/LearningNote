@@ -341,6 +341,11 @@ from file import load_yaml, load_json
 
 class Config:
 
+    path = "executable file path"
+    url = "https:www.example.com"
+    port = 8080
+    render_template_path = "/template"
+
     def __init__(self, file: str):
         if 'yaml' in file:
             self.config = load_yaml(file)
