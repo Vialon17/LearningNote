@@ -200,8 +200,7 @@ ins = Try()
 print(ins.shape)
 
 # the result :)
->>>
-(3, 3)
+>>> (3, 3)
 
 ```
 

@@ -13,7 +13,7 @@ It won't contain all points but some parts that I think is important in Fluent P
 
 -----
 
-## 2:: Data Structure
+## 2: Data Structure
 
 ***Part - 1: Other Important Points***
 
@@ -199,6 +199,33 @@ _May it's suitable putting the important knowledge points here, I privately thin
 * Container List: `list`, `tuple`, `collections.deque` (_store different types of data._)
   
 * Flat List: `str`, `bytes`, `bytearray`, `memoryview`, `array.array` (_data must have same type._)
+
+----
+
+## Beautiful Python
+
+This part is mainly about Pythonista(_python master_) Code.
+
+Python, as the most hightest readablity language and its creation philosophy, can create popular and easy-to-understand code.
+
+So we should follow the Python Zen:
+```
+# import this
+The Zen of Python, by Tim Peters
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+...
+```
+
+_Recently, I had did some programs with my boss, and he did some code guideance to me, which made me realize the importance of code quality. So I had read the book -- [The Hitchhiker’s Guide to Python](https://docs.python-guide.org/)_
+
+
 
 ----
 ## Others
