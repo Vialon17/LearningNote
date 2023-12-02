@@ -228,11 +228,52 @@ _Recently, I had did some programs with my boss, and he did some code guideance 
 
 
 ----
-## Others
+## Decorators and Closures
 
-### The decorator
+### Decorator
 
-**Decorator** is usually used to extend the funciton temporarily, even can change the numbers of returner.
+**Decorator**, as one of the most successful [Design Patterns](https://en.wikipedia.org/wiki/Software_design_pattern), has been used in many programming languages, as well as in Python. Decorator means that we can add some decorations for our specific functions, in anothe way -- **add some extra features to the function.**
+
+In Python, we can regard the decorator as specific function which packages the target function, and use it as the syntax sugar `@` before the target function.
+
+Let's have an instance.
+
+```python
+from time import time
+
+# the decorator --> calculate the function run time
+def timer(func):
+    def inner_func(*args, **kwargs):
+        print('here is the real function.')
+        start_time = time()
+        result = func(*args, **kwargs)
+        end_time = time()
+        print(f'the function {func.__name__} costs {end_time - start_time}s.')
+        return result
+    return inner_func
+
+
+@timer
+def test_func():
+    x, res = 1, 0
+    for i in range(100000):
+        res = res + x * i
+        x += 1
+    return res
+
+test_func()
+
+# the console:
+# >>> here is the real function.
+# >>> the function test_func costs 0.005997180938720703s.
+# >>> 333333333300001
+```
+
+The decorator can also add some parameters as normal function, but when doing this, we need package the decorator first, the function structure will be this:
+
+> the decorator --- get the real decorator's parameters
+>> the real decorator --- get the target function
+>>> the inner function --- get the target function's parameters
 
 ```python
     import os, time
@@ -245,7 +286,10 @@ _Recently, I had did some programs with my boss, and he did some code guideance 
             def clock(*arg, **kwargs):
                 # the addition function of the decorator
                 start_time = time.time()
-                print(arg, kwargs)
+                if active:
+                    print(arg, kwargs)
+                else:
+                    print('active has closed.')
                 func_return = func(*arg, *kwargs)
                 run_time = time.time() - start_time
                 return func_return, run_time
@@ -265,15 +309,86 @@ _Recently, I had did some programs with my boss, and he did some code guideance 
     temp_list = [1,2,3,4,5]
     arr, run_time = func1(temp_list, 6)
     print(f'the function {func1.__name__} get a list and return the list {arr} after running {round(run_time, 2)} seconds.')
-```
-The output:
-```
-    >>> here here
+
+    # >>> here here
     ### freeze 6s there
-    >>> Here start game.
-    >>> the function clock get a list and return the list [1, 3, 6, 10, 15] after running 6.01 seconds.
+    # >>> Here start game.
+    # >>> the function clock get a list and return the list [1, 3, 6, 10, 15] after running 6.01 seconds.
+```
+We can also find that the `class decorator` like in [Flask](https://flask.palletsprojects.com/en/3.0.x/):
+
+```python
+# creat a flask app
+from flask import Flask, request, jsonify
+from flask_cors import CORS
+
+# enable CORS(cross-origin-resource-share) 
+app = Flask(__name__)
+CORS(app)
+
+# specify index route to the server
+@app.route('/', method = ['GET', 'POST'])
+def index():
+    return 'OK'
+
+if __name__ == '__main__':
+    app.run(host = 'localhost', port = 8080, debug = True)
 ```
 
+In this Flask instance, we can see there comes the class decoretor `app.route`, in fact, decorator can be created inside an object like this:
+
+```python
+# create a class decorator
+# outter decorator
+
+class Temp:
+    num = 1
+    cot = 0
+
+    def count(func):
+        def inner(*args, **kwargs):
+            print(f'we have call the funcion count times.')
+            return func(*args, **kwargs)
+        return inner
+
+@Temp.count
+def test(num):
+    print(num)
+
+test(1)
+
+# the resule:
+# >>> we have call the funcion count times.
+# >>> 1
+```
+
+But when we wanna call the class's attribute `cls.cot`, this function will raise error `TypeError: Temp.count() takes 1 positional argument but 2 were given`, so we should update our function:
+
+```python
+# inner class decorator
+class Temp:
+    num = 1
+    cot = 0
+
+    def inner_count(func):
+        def inner(self, *args, **kwargs):
+            print(f'we have call the funcion count times.')
+            print(f'we get {self.cot} attribute.')
+            return func(self, *args, **kwargs)
+        return inner
+
+    @inner_count
+    def test(self, num):
+        print(num)
+
+Temp().test(1)
+# the result:
+# >>> we have call the funcion count times.
+# >>> we get 0 attribute.
+# >>> 1
+```
+
+There, there, here are the common decorators used in diary work. You can also read this article -- [Python Decorator](https://zhuanlan.zhihu.com/p/638893090)(zh_cn), it has similar demonstration. :)
 
 ------
 [^1]: [The Zen of Python](https://peps.python.org/pep-0020/) -> Pythonic: Firstly, as a python engineer, we must walk like a python and this way is called pythonic 😗.
