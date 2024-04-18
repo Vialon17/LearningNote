@@ -21,6 +21,29 @@ Write Some Note About Work Is A Good Idea. _-- By Vialon17_
 
 ### Flask Note
 
+#### Flask Initialization
+
+Flask deleted the decorator `before_first_request` in its 2.3.3 version, so here uses the `before_request` and set `flask.config` dictorary variable to simulate the former.
+
+```python
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.before_request
+def before_first_request():
+    global coms_cursor
+    if not app.config['APP_ALREADY_STARTED']:
+        # do some thing
+        app.config['APP_ALREADY_STARTED'] = True
+
+if __name__ == "__main__":
+    app.config['APP_ALREADY_STARTED'] = False
+    app.run(host = "localhost", port = 8080, debug = True)
+```
+
+It'll run the `before_first_request` function code and adjust the configuration.
+
 ### PySide Note
 
 ### Pandas Note
