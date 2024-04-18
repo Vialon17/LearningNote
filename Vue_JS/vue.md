@@ -38,6 +38,7 @@ let all_data = {
         'temp_val2': 2,
     }
 }
+
 // defind function
 function update_phone (phones) {
     for (let i in phones) {
@@ -67,6 +68,5 @@ class Temp {
         return this.phone
     }
 }
-
 
 ```
